@@ -5,68 +5,52 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Steal the Brainrot - Fortnite</title>
 <style>
-body {
-  margin:0; padding:0;
-  font-family: 'Poppins', Arial, sans-serif;
-  color:#fff;
+body{
+  margin:0; padding:0; font-family:Arial,sans-serif;
   background-image: url('TON_IMAGE_DE_FOND_URL_ICI');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  overflow-x: hidden;
+  background-size: cover; background-position:center; background-attachment:fixed;
+  color:#fff;
 }
-.content {
+.content{
   background-color: rgba(10,10,25,0.85);
-  width: 100%;
-  min-height: 100vh;
-  padding: 25px;
+  min-height:100vh; padding:25px; box-sizing:border-box;
 }
-h1,h2,h3 { color:#00ffff; margin-top:0; }
-#intro {
-  font-size:1.4em; text-align:center; margin-bottom:20px;
-  color:#00ffff; border-right:3px solid #00ffff;
-  white-space: nowrap; overflow: hidden; width:0;
-  animation: typing 3s steps(40,end) forwards, blink 0.7s step-end infinite;
+h1,h2{color:#00ffff;}
+.annonce-banner{
+  display:none; background:red; color:#fff; font-size:1.4rem;
+  padding:18px; border-radius:8px; margin-bottom:16px; text-align:center;
 }
-@keyframes typing { from{width:0;} to{width:100%;} }
-@keyframes blink { 50%{border-color:transparent;} }
-.code-container, .map-status, .comment-section, #adminLogin, #annoncesDiv {
-  background-color: rgba(30,30,50,0.9);
-  border:2px solid #00ffff; border-radius:12px; padding:20px; margin:20px 0;
+.annonce-banner h3{margin:0; font-size:1.6rem;}
+.annonce-banner p{margin:0; font-size:1.1rem;}
+.comment-section, .code-container, .map-status, #adminLogin{
+  background: rgba(30,30,50,0.9); border:2px solid #00ffff; padding:20px; border-radius:12px; margin:20px 0;
 }
-input, textarea, button { width:100%; padding:10px; margin-top:5px; border-radius:8px; border:none; }
-button { background-color:#00ffff; color:#000; font-weight:bold; cursor:pointer; transition:0.3s; }
-button:hover{background-color:#00cccc;}
-.delete-btn{background-color:#ff4444;color:#fff;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;}
-.comment{background-color: rgba(255,255,255,0.1); padding:10px; border-radius:8px; margin-bottom:10px;}
-#brainrot-emoji{position:fixed; bottom:20px; right:20px; font-size:28px; cursor:pointer; transition:0.3s;}
+input, textarea, button{width:100%; padding:10px; margin-top:5px; border-radius:8px; border:none;}
+button{background:#00ffff; color:#000; font-weight:bold; cursor:pointer;}
+.delete-btn{background:#ff4444;color:#fff;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;margin-top:5px;}
+.comment{background: rgba(255,255,255,0.1); padding:10px; border-radius:8px; margin-bottom:10px;}
+#brainrot-emoji{position:fixed; bottom:20px; right:20px; font-size:28px; cursor:pointer;}
 #brainrot-emoji:hover{transform:scale(1.2);}
-.annonce {background-color: rgba(0,255,255,0.2); padding:10px; margin-bottom:10px; border-left:4px solid #00ffff;}
-.annonce strong{color:#00ff99;}
-@media(max-width:768px){ .content{padding:15px;} }
+.annonce {background-color: rgba(255,0,0,0.1); padding:10px; margin-bottom:10px; border-left:4px solid red;}
 </style>
 </head>
 <body>
 <div class="content">
   <h1>Steal the Brainrot - Fortnite</h1>
 
-  <div id="intro">Bienvenue sur Steal the Brainrot ! 👋</div>
+  <!-- BANNIERE D'ANNONCE -->
+  <div id="annonceBanner" class="annonce-banner">
+    <h3 id="annonceBannerTitle"></h3>
+    <p id="annonceBannerMsg"></p>
+  </div>
 
-  <!-- ANNONCES OFFICIELLES -->
-  <h2>📢 Annonces officielles</h2>
+  <!-- HISTORIQUE ANNONCES -->
   <div id="annoncesDiv"></div>
 
-  <p>Fortnite ne se limite plus à son Battle Royale classique. La carte <strong>Steal the Brainrot</strong> rencontre un immense succès. Inspirée des modes tycoon, elle repose sur une mécanique simple mais addictive : accumuler et protéger des Brainrots.</p>
+  <p>Fortnite ne se limite plus à son Battle Royale classique. La carte <strong>Steal the Brainrot</strong> rencontre un immense succès.</p>
 
   <h2>👥 Joueurs en ligne</h2>
   <p id="visitorCount">Chargement...</p>
-  <script>
-    fetch('https://api.countapi.xyz/hit/stealthebrainrot/visits')
-      .then(r=>r.json()).then(data=>{
-        document.getElementById('visitorCount').innerText = `Joueurs actuellement sur la map : ${data.value}`;
-      });
-  </script>
 
   <h2>💻 Comment utiliser les codes ?</h2>
   <p>Allez au terminal numérique ou à côté de la roue Galaxy Spin. Tapez le code et validez-le.</p>
@@ -106,105 +90,146 @@ button:hover{background-color:#00cccc;}
     <button onclick="addComment()">Envoyer</button>
   </div>
 
-  <div id="adminLogin" style="display:none;">
+  <!-- ADMIN -->
+  <div id="adminLogin" style="display:none;" class="comment-section">
     <h3>🔐 Espace Admin</h3>
     <div id="adminComments"></div>
-  </div>
 
-  <span id="brainrot-emoji" title="Zone secrète 🧠">🧠</span>
+    <h3>📢 Créer une annonce</h3>
+    <input id="annTitle" placeholder="Titre de l'annonce">
+    <textarea id="annMsg" placeholder="Message de l'annonce"></textarea>
+    <input id="annCountdown" type="number" placeholder="Durée en secondes">
+    <button id="publishAnnonce">Publier annonce</button>
+  </div>
+</div>
+
+<div id="brainrot-emoji" title="Menu admin secret">🧠</div>
 
 <script>
-  // ======= COMMENTAIRES PUBLICS =======
-  let publicComments = JSON.parse(localStorage.getItem('publicComments') || '[]');
-  function renderComments() {
-    const cDiv = document.getElementById('comments');
-    cDiv.innerHTML = '';
-    publicComments.forEach(c=>{
-      const div = document.createElement('div');
-      div.className='comment';
-      div.innerHTML=`<strong>${c.user}</strong> : ${c.msg}`;
-      cDiv.appendChild(div);
-    });
-    localStorage.setItem('publicComments', JSON.stringify(publicComments));
-  }
-  function addComment(){
-    const user=document.getElementById('username').value.trim();
-    const msg=document.getElementById('message').value.trim();
-    if(!user||!msg){alert('Remplis ton pseudo et ton message !'); return;}
-    publicComments.push({user,msg});
-    renderComments();
-    document.getElementById('message').value='';
-  }
+// ---------------- COMMENTAIRES ----------------
+const KEY_PUBLIC='publicComments_v1';
+let publicComments = JSON.parse(localStorage.getItem(KEY_PUBLIC)||'[]');
+
+function renderComments(){
+  const cDiv=document.getElementById('comments'); cDiv.innerHTML='';
+  publicComments.forEach(c=>{
+    const div=document.createElement('div'); div.className='comment';
+    div.innerHTML=`<strong>${c.user}</strong> : ${c.msg}`;
+    cDiv.appendChild(div);
+  });
+  localStorage.setItem(KEY_PUBLIC, JSON.stringify(publicComments));
+}
+function addComment(){
+  const user=document.getElementById('username').value.trim();
+  const msg=document.getElementById('message').value.trim();
+  if(!user||!msg){alert('Remplis pseudo et message !'); return;}
+  publicComments.push({user,msg});
   renderComments();
+  document.getElementById('message').value='';
+  document.getElementById('username').value='';
+}
+renderComments();
 
-  // ======= ADMIN SECRET =======
-  document.getElementById('brainrot-emoji').onclick=()=>{
-    const code=prompt("Entre le code admin :");
-    if(code==="2711"){
-      document.getElementById('adminLogin').style.display='block';
-      loadAdminComments();
-      loadAnnonces();
-    }else{alert("Code incorrect !");}
-  };
+// ---------------- ADMIN ----------------
+const KEY_ADMIN='adminComments_v1';
+const KEY_ANN='annonces_v1';
+let adminComments=JSON.parse(localStorage.getItem(KEY_ADMIN)||'[]');
+let annonces=JSON.parse(localStorage.getItem(KEY_ANN)||'[]');
 
-  let adminComments=JSON.parse(localStorage.getItem('adminComments')||'[]');
-  let annonces=JSON.parse(localStorage.getItem('annonces')||'[]');
+const brainrot = document.getElementById('brainrot-emoji');
+const adminDiv = document.getElementById('adminLogin');
 
-  function loadAdminComments(){
-    const div=document.getElementById('adminComments');
-    div.innerHTML='';
-    adminComments.forEach((c,i)=>{
-      const cm=document.createElement('div');
-      cm.className='comment';
-      cm.innerHTML=`${c}`;
-      const delBtn=document.createElement('button');
-      delBtn.className='delete-btn';
-      delBtn.textContent='Supprimer';
-      delBtn.onclick=()=>{
-        adminComments.splice(i,1);
-        localStorage.setItem('adminComments',JSON.stringify(adminComments));
-        loadAdminComments();
-      };
-      cm.appendChild(delBtn);
-      div.appendChild(cm);
-    });
-    const textarea=document.createElement('textarea');
-    textarea.placeholder="Note admin...";
-    const addBtn=document.createElement('button');
-    addBtn.textContent="Ajouter au journal";
-    addBtn.onclick=()=>{
-      if(textarea.value.trim()!==''){
-        adminComments.push(textarea.value);
-        localStorage.setItem('adminComments',JSON.stringify(adminComments));
-        loadAdminComments();
-      }
-    };
-    div.appendChild(textarea);
-    div.appendChild(addBtn);
+brainrot.addEventListener('click',()=>{
+  const code=prompt("Code admin :");
+  if(code==='2711'){
+    adminDiv.style.display='block';
+    loadAdminComments();
+    renderAnnonces();
+  } else alert('Code incorrect !');
+});
 
-    // ======= ANNONCES =======
-    const annonceDiv=document.createElement('div');
-    const titreInput=document.createElement('input');
-    titreInput.placeholder='Titre de l\'annonce';
-    const msgInput=document.createElement('textarea');
-    msgInput.placeholder='Message de l\'annonce...';
-    const addAnnonceBtn=document.createElement('button');
-    addAnnonceBtn.textContent="Publier annonce";
-    addAnnonceBtn.onclick=()=>{
-      if(titreInput.value.trim()===''||msgInput.value.trim()===''){alert('Remplis titre et message !'); return;}
-      annonces.push({titre:titreInput.value,msg:msgInput.value});
-      localStorage.setItem('annonces',JSON.stringify(annonces));
-      renderAnnonces();
-      titreInput.value=''; msgInput.value='';
-    };
-    annonceDiv.appendChild(titreInput);
-    annonceDiv.appendChild(msgInput);
-    annonceDiv.appendChild(addAnnonceBtn);
-    div.appendChild(document.createElement('hr'));
-    div.appendChild(annonceDiv);
+function loadAdminComments(){
+  const div=document.getElementById('adminComments'); div.innerHTML='';
+  adminComments.forEach((c,i)=>{
+    const d=document.createElement('div'); d.className='comment';
+    d.innerHTML=c;
+    const del=document.createElement('button'); del.className='delete-btn'; del.textContent='Supprimer';
+    del.onclick=()=>{adminComments.splice(i,1); localStorage.setItem(KEY_ADMIN,JSON.stringify(adminComments)); loadAdminComments();}
+    d.appendChild(del);
+    div.appendChild(d);
+  });
+  const ta=document.createElement('textarea'); ta.placeholder='Nouvelle note';
+  const btn=document.createElement('button'); btn.textContent='Ajouter note';
+  btn.onclick=()=>{
+    if(ta.value.trim()===''){alert('Écris quelque chose'); return;}
+    adminComments.push(ta.value.trim());
+    localStorage.setItem(KEY_ADMIN,JSON.stringify(adminComments));
+    ta.value=''; loadAdminComments();
   }
+  div.appendChild(ta); div.appendChild(btn);
+}
 
-  function renderAnnonces(){
-    const aDiv=document.getElementById('annoncesDiv');
-    aDiv.innerHTML='';
-    annonces
+// ---------------- ANNONCES ----------------
+const banner=document.getElementById('annonceBanner');
+const titleEl=document.getElementById('annonceBannerTitle');
+const msgEl=document.getElementById('annonceBannerMsg');
+const annDiv=document.getElementById('annoncesDiv');
+let annTimer;
+
+function renderAnnonces(){
+  if(annonces.length===0){banner.style.display='none'; annDiv.innerHTML=''; return;}
+  const last=annonces[annonces.length-1];
+  banner.style.display='block';
+  titleEl.textContent=last.titre;
+  let remaining=last.countdown||0;
+  clearInterval(annTimer);
+  function updateBanner(){
+    if(remaining>0){
+      msgEl.textContent=`${last.msg} | Temps restant : ${formatTime(remaining)}`;
+      remaining--; 
+    } else { msgEl.textContent=last.msg; clearInterval(annTimer); banner.style.display='none'; }
+  }
+  updateBanner();
+  if(remaining>0){ annTimer=setInterval(updateBanner,1000); }
+
+  // historique annonces
+  annDiv.innerHTML='<h3>Historique des annonces</h3>';
+  annonces.slice().reverse().forEach((a,idx)=>{
+    const box=document.createElement('div'); box.className='annonce';
+    box.innerHTML=`<strong>Admin — ${a.titre}</strong><br>${a.msg}`;
+    if(adminDiv.style.display==='block'){
+      const del=document.createElement('button'); del.className='delete-btn'; del.textContent='Supprimer';
+      del.onclick=()=>{annonces.splice(annonces.length-1-idx,1); localStorage.setItem(KEY_ANN,JSON.stringify(annonces)); renderAnnonces();}
+      box.appendChild(del);
+    }
+    annDiv.appendChild(box);
+  });
+}
+
+// publier annonce depuis admin
+document.getElementById('publishAnnonce').addEventListener('click',()=>{
+  const t=document.getElementById('annTitle').value.trim();
+  const m=document.getElementById('annMsg').value.trim();
+  let c=parseInt(document.getElementById('annCountdown').value);
+  if(!t||!m){alert('Titre et message obligatoires'); return;}
+  if(isNaN(c)||c<0) c=0;
+  annonces.push({titre:t,msg:m,countdown:c});
+  localStorage.setItem(KEY_ANN,JSON.stringify(annonces));
+  document.getElementById('annTitle').value='';
+  document.getElementById('annMsg').value='';
+  document.getElementById('annCountdown').value='';
+  renderAnnonces();
+});
+
+function formatTime(s){
+  const h=Math.floor(s/3600); const m=Math.floor((s%3600)/60); const sec=s%60;
+  return `${h>0?h+'h ':''}${m>0?m+'m ':''}${sec}s`;
+}
+
+// ---------------- VISITEURS ----------------
+fetch('https://api.countapi.xyz/hit/stealthebrainrot/visits').then(r=>r.json()).then(d=>{
+  document.getElementById('visitorCount').innerText=`Joueurs actuellement sur la map : ${d.value}`;
+});
+</script>
+</body>
+</html>
