@@ -1,136 +1,260 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Steal a Brainrot — Présentation du Jeu</title>
-  <style>
-    :root{
-      --accent:#f0c419;
-      --card-bg:rgba(38,40,42,0.95);
-      --muted:#cfcfcf;
-      --green:#2f9b3a;
-      --glass-blur:8px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Steal the Brainrot Fortnite</title>
+<style>
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 20px;
+  line-height: 1.6;
+  background-image: url('TON_IMAGE_DE_FOND_URL_ICI'); /* ton image */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #fff;
+}
 
-    /* Fond animé arc-en-ciel fluide */
-    body{
-      background: linear-gradient(135deg, #7b2ff7, #ff5c9c, #ffb86b, #3feab3, #6be3ff, #ffd93d);
-      background-size: 400% 400%;
-      animation: moveBackground 15s ease infinite;
-      min-height:100%;
-      padding:40px 16px;
-      display:flex;
-      align-items:flex-start;
-      justify-content:center;
-      gap:24px;
-    }
+.content {
+  background-color: rgba(10, 10, 25, 0.85);
+  padding: 25px;
+  border-radius: 12px;
+  max-width: 950px;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(0,0,0,0.7);
+}
 
-    @keyframes moveBackground {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+/* Effet néon dynamique pour titres */
+@keyframes neonGlow {
+  0%, 100% { text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff, 0 0 20px #00ffff, 0 0 30px #ff00ff; }
+  50% { text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff, 0 0 30px #00ffff, 0 0 40px #ff00ff; }
+}
 
-    .layout{
-      width:1100px;
-      max-width:100%;
-      display:grid;
-      grid-template-columns:1fr 480px;
-      gap:28px;
-      align-items:start;
-    }
+h1, h2 {
+  color: #00ffff;
+  animation: neonGlow 1.5s infinite alternate;
+}
 
-    .card{
-      background:var(--card-bg);
-      color:var(--muted);
-      padding:28px;
-      border-radius:12px;
-      box-shadow:0 8px 0 rgba(0,0,0,0.28), 0 0 24px rgba(0,0,0,0.2);
-      border:2px solid rgba(240,196,25,0.06);
-      backdrop-filter: blur(var(--glass-blur));
-    }
+h1 { text-align: center; margin-bottom: 25px; }
 
-    header h1{
-      margin:0 0 12px 0;
-      color:var(--accent);
-      font-size:28px;
-      letter-spacing:0.2px;
-    }
-    .subtitle{color:var(--accent);font-weight:700;margin-bottom:8px}
-    hr.dashed{border:0;border-top:3px solid rgba(240,196,25,0.12);margin:18px 0;border-radius:2px}
-    .intro p{line-height:1.6;margin:0 0 8px 0;color:#e6e6e6}
+.code-container {
+  background-color: rgba(30, 30, 50, 0.9);
+  border: 2px solid #00ffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  color: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.code-container:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px #00ffff, 0 0 30px #ff00ff;
+}
 
-    .characters.card{
-      padding:18px 16px;
-      position:relative;
-      overflow:hidden;
-    }
-    .characters h2{color:var(--accent);margin:0 0 12px 0;font-size:24px}
+.code-container h3 { margin-top: 0; color: #ff00ff; }
+.note { color: #ff5555; font-weight: bold; margin-top: 10px; }
+p { margin: 10px 0; }
+ul { margin: 10px 0 20px 20px; }
+li { margin-bottom: 5px; }
 
-    table{width:100%;border-collapse:collapse;font-size:14px}
-    thead th{background:var(--green);color:#fff;padding:10px 12px;text-align:left;font-weight:700}
-    tbody td{padding:10px 12px;border-top:1px solid rgba(255,255,255,0.03);background:linear-gradient(180deg,rgba(0,0,0,0.25),rgba(0,0,0,0.18))}
-    tbody tr:nth-child(even) td{background:linear-gradient(180deg,rgba(0,0,0,0.16),rgba(0,0,0,0.08))}
+.comment-section {
+  background-color: rgba(30, 30, 50, 0.9);
+  border: 2px solid #00ffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  color: #fff;
+}
 
-    .small{font-size:13px;color:#bfbfbf}
-    footer{margin-top:16px;text-align:center;color:#bdbdbd;font-size:13px}
+input, textarea, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
 
-    @media (max-width:980px){
-      .layout{grid-template-columns:1fr;}
-      .characters{order:2}
-    }
-  </style>
+/* Boutons néon dynamique */
+@keyframes buttonGlow {
+  0%, 100% { box-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff; }
+  50% { box-shadow: 0 0 15px #00ffff, 0 0 25px #ff00ff; }
+}
+
+button {
+  background-color: #00ffff;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: 0.3s;
+  animation: buttonGlow 1.5s infinite alternate;
+}
+button:hover { background-color: #ff00ff; color: #fff; }
+
+/* Cartes commentaires néon */
+.comment-card {
+  background-color: rgba(0, 255, 255, 0.1);
+  border: 2px solid #ff00ff;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 10px 0;
+  box-shadow: 0 0 10px #00ffff, 0 0 15px #ff00ff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.comment-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px #00ffff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+}
+.comment-card strong { color: #ffcc00; }
+.comment-card em { color: #ff77ff; }
+
+/* Map status */
+.map-status {
+  background-color: rgba(20, 20, 50, 0.9);
+  border: 2px solid #ff00ff;
+  border-radius: 12px;
+  padding: 15px;
+  margin: 20px 0;
+  color: #fff;
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
+}
+.map-status ul { list-style: none; padding-left: 0; }
+.map-status li {
+  padding: 8px;
+  margin-bottom: 6px;
+  border-left: 4px solid #00ffff;
+  background: rgba(0, 255, 255, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.map-status li:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 10px #00ffff, 0 0 15px #ff00ff;
+}
+
+/* Player counter */
+#playerCount {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #00ff99;
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
+  margin-bottom: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body { padding: 10px; }
+  .content { padding: 15px; }
+  h1 { font-size: 1.8em; }
+  h2 { font-size: 1.3em; }
+  .code-container, .comment-section, .map-status { padding: 15px; }
+}
+@media (max-width: 480px) {
+  h1 { font-size: 1.5em; }
+  h2 { font-size: 1.1em; }
+  button { padding: 12px; font-size: 1em; }
+}
+</style>
 </head>
 <body>
-  <div class="layout">
-    <section class="card">
-      <header>
-        <h1>Steal a Brainrot — Présentation du Jeu</h1>
-      </header>
+<div class="content">
+<h1>Steal the Brainrot - Fortnite</h1>
 
-      <div class="intro">
-        <p class="subtitle">But du jeu</p>
-        <hr class="dashed">
-        <p>Dans <strong>Steal a Brainrot</strong>, votre objectif est d'explorer la map Fortnite, collecter un maximum de Brainrots et d'objets rares tout en évitant les autres joueurs. Utilisez vos compétences et votre stratégie pour progresser, débloquer de nouveaux défis et viser la victoire suprême !</p>
+<p>Fortnite ne se limite plus à son Battle Royale classique. La carte <strong>Steal the Brainrot</strong>, imaginée par Ferins, rencontre un immense succès. Elle repose sur une mécanique simple : accumuler et protéger des Brainrots, de petites créatures générant des revenus.</p>
 
-        <p class="subtitle" style="margin-top:18px">À propos</p>
-        <hr class="dashed">
-        <p>Ce site présente le jeu et sa communauté. Les sections contenant des codes ont été retirées pour garder la page claire et à jour. Restez connectés pour découvrir les futures mises à jour et fonctionnalités du jeu.</p>
+<p>La carte contient aussi des codes secrets offrant des bonus exclusifs.</p>
 
-        <footer>© 2025 — Steal a Brainrot | Mis à jour par pseudonymedbz-eng</footer>
-      </div>
-    </section>
+<h2>👥 Joueurs en ligne</h2>
+<p id="playerCount">Chargement du nombre de joueurs...</p>
 
-    <aside class="card characters">
-      <h2>Personnages Brainrot triés par Argent / Seconde <span class="small">(Money Per Second)</span></h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Nom</th>
-            <th>Rareté</th>
-            <th>Prix d'achat</th>
-            <th>Argent / Seconde</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Chillin chili</td><td>Secret</td><td>3,000,000,000</td><td>350,000,000</td></tr>
-          <tr><td>La Secret Combination</td><td>Secret</td><td>50,000,000,000</td><td>125,000,000</td></tr>
-          <tr><td>Trenostruzzo Turbo 3000</td><td>Brainrot God</td><td>25,000,000</td><td>150,000</td></tr>
-          <tr><td>Urubini Flamenguini</td><td>Brainrot God</td><td>30,000,000</td><td>150,000</td></tr>
-          <tr><td>Los Orcalitos</td><td>Brainrot God</td><td>45,000,000</td><td>235,000</td></tr>
-          <tr><td>Dug Dug Dug</td><td>Brainrot God</td><td>45,500,000</td><td>255,000</td></tr>
-        </tbody>
-      </table>
+<h2>💻 Comment utiliser les codes ?</h2>
+<p>Allez au terminal numérique dans la boutique ou à côté de la roue Galaxy Spin. Tapez le code et validez-le.</p>
 
-      <p class="small" style="margin-top:12px">Les valeurs ci-dessus correspondent aux données affichées dans la version précédente du site.</p>
-    </aside>
-  </div>
+<h2>📜 Codes Utilisables</h2>
+<div class="code-container">
+<p>(NEW) 651312 → Fait apparaître un Ferinsini Luckini</p>
+<p>(NEW) 410592 → Brainrot Secret dans la machine d'amélioration</p>
+<p>(NEW) 3428 → Passe le temps de la machine d'amélioration</p>
+<p>536736 → Brainrot Secret dans la machine d'amélioration</p>
+<p>3851 → Passe le temps de la machine d'amélioration</p>
+<p>1003 → Passe le temps de la machine d'amélioration</p>
+<p>1706 → Débloque un Brainrot God Lucky Rot</p>
+<p>8257 → Lucky Rot Brainrot God</p>
+<p>5269 → Fait apparaître un Brainrot God</p>
+</div>
+
+<h2>📜 Codes Expirés</h2>
+<div class="code-container">
+<p>526497, 9586, 2553, 7389, 9452, 1442, 9231, 6393, 3632, 3005, 9207676, 2388, 7346, 1825, 1912, 5289, 1507, 0108, 3000, 9547, 6759</p>
+<p class="note">Si un code ne fonctionne plus, c’est normal, il a été supprimé.</p>
+</div>
+
+<h2>❓ FAQ</h2>
+<p><strong>Qu’est-ce que Steal the Brainrot ?</strong> Mode tycoon avec Brainrots et codes spéciaux.</p>
+<p><strong>Comment entrer un code ?</strong> Au terminal numérique, tapez le code et validez.</p>
+
+<h2>🗺️ État de la map</h2>
+<div class="map-status">
+<ul>
+<li><strong>Zone centrale :</strong> Terminal numérique et roue Galaxy Spin</li>
+<li><strong>Zone Brainrot :</strong> Brainrots normaux apparaissent toutes les 5 minutes</li>
+<li><strong>Zone machine d’amélioration :</strong> Machine fonctionnelle, peut être accélérée avec les codes</li>
+<li><strong>Zone Ferinsini Luckini :</strong> Zone rare avec Brainrots spéciaux</li>
+<li><strong>Zone évènements :</strong> Codes désactivés temporairement pendant certains événements</li>
+</ul>
+</div>
+
+<div class="comment-section">
+<h2>💬 Vos retours sur les codes</h2>
+<p>Indiquez si un code fonctionne :</p>
+
+<form id="commentForm">
+<label for="pseudo">Pseudo :</label>
+<input type="text" id="pseudo" name="pseudo" required>
+
+<label for="code">Code testé :</label>
+<input type="text" id="code" name="code" required>
+
+<label for="message">Commentaire :</label>
+<textarea id="message" name="message" rows="3" required></textarea>
+
+<button type="submit">Envoyer</button>
+</form>
+
+<h3>Commentaires :</h3>
+<div id="commentsList"></div>
+</div>
+</div>
+
+<script>
+// Compteur de joueurs simulé
+function updatePlayerCount() {
+  const count = Math.floor(Math.random() * 450) + 50; // entre 50 et 500
+  document.getElementById('playerCount').textContent = `Joueurs actuellement sur la map : ${count}`;
+}
+updatePlayerCount();
+setInterval(updatePlayerCount, 5000);
+
+// Formulaire commentaires
+const form = document.getElementById('commentForm');
+const commentsList = document.getElementById('commentsList');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  const pseudo = document.getElementById('pseudo').value;
+  const code = document.getElementById('code').value;
+  const message = document.getElementById('message').value;
+
+  const card = document.createElement('div');
+  card.classList.add('comment-card');
+  card.innerHTML = `<strong>${pseudo}</strong> a testé le code <em>${code}</em> : ${message}`;
+  commentsList.appendChild(card);
+
+  form.reset();
+});
+</script>
 </body>
 </html>
-
-
-
-
