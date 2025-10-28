@@ -5,188 +5,202 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Steal the Brainrot - Fortnite</title>
 <style>
-html, body {
-  margin:0; padding:0;
-  height:100%; width:100%;
+body {
+  margin: 0;
+  padding: 0;
   font-family: Arial, sans-serif;
   color: #fff;
-}
-body {
   background-image: url('TON_IMAGE_DE_FOND_URL_ICI');
-  background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 .content {
   background-color: rgba(10,10,25,0.85);
-  width: 100%; min-height: 100vh; padding: 25px;
+  width: 100%;
+  min-height: 100vh;
+  padding: 25px;
 }
-h1,h2 { color:#00ffff; margin-top:0; }
-.code-container, .comment-section, .map-status, #adminLogin {
+h1, h2 {
+  color: #00ffff;
+  margin-top: 0;
+}
+.code-container, .map-status, .comment-section, #adminLogin {
   background-color: rgba(30,30,50,0.9);
-  border:2px solid #00ffff; border-radius:12px; padding:20px; margin:20px 0;
+  border: 2px solid #00ffff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
 }
-#playerCount { font-weight:bold; color:#00ff99; margin-bottom:20px; }
-input, textarea, button { width:100%; padding:10px; margin-top:5px; border-radius:8px; }
-button { background-color:#00ffff; border:none; color:#000; cursor:pointer; margin-top:10px; }
-.delete-btn { background-color:#ff4444; color:#fff; border:none; padding:5px 10px; cursor:pointer; margin-top:10px; }
-#adminToggle { cursor:pointer; font-size:1.5em; text-align:center; margin-top:10px; }
-.comment-card { background-color: rgba(50,50,70,0.9); border-radius:8px; padding:10px; margin-top:10px; }
-@media(max-width:480px){ h1{font-size:1.5em;} h2{font-size:1.1em;} button{padding:12px;} }
+input, textarea, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  border: none;
+}
+button {
+  background-color: #00ffff;
+  color: #000;
+  font-weight: bold;
+  cursor: pointer;
+}
+.delete-btn {
+  background-color: #ff4444;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.comment {
+  background-color: rgba(255,255,255,0.1);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+@media (max-width: 768px) {
+  .content { padding: 15px; }
+}
 </style>
 </head>
 <body>
 <div class="content">
-<h1>Steal the Brainrot - Fortnite</h1>
-<p>Fortnite ne se limite plus à son Battle Royale classique. La carte <strong>Steal the Brainrot</strong> rencontre un immense succès.</p>
+  <h1>Steal the Brainrot - Fortnite</h1>
+  <p>Fortnite ne se limite plus à son Battle Royale classique. La carte <strong>Steal the Brainrot</strong> rencontre un immense succès. Inspirée des modes tycoon, elle repose sur une mécanique simple mais addictive : accumuler et protéger des Brainrots.</p>
 
-<h2>👥 Joueurs en ligne</h2>
-<p id="playerCount">Chargement du nombre de joueurs...</p>
+  <h2>👥 Joueurs en ligne</h2>
+  <p id="visitorCount">Chargement...</p>
 
-<h2>📜 Codes Utilisables</h2>
-<div class="code-container">
-<p>(NEW) 651312 → Fait apparaître un Ferinsini Luckini</p>
-<p>(NEW) 410592 → Brainrot Secret donnée dans la machine d'amélioration</p>
-<p>(NEW) 3428 → Passe le temps de la machine d'amélioration</p>
-<p>536736 → Brainrot Secret donnée dans la machine d'amélioration</p>
-<p>3851 → Passe le temps de la machine d'amélioration</p>
-<p>1003 → Passe le temps de la machine d'amélioration</p>
-<p>1706 → Débloque un Brainrot God Lucky Rot</p>
-<p>8257 → Lucky Rot Brainrot God</p>
-<p>5269 → Fait apparaître un Brainrot God</p>
-</div>
+  <script>
+    fetch('https://api.countapi.xyz/hit/stealthebrainrot/visits')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('visitorCount').innerText =
+          `Joueurs actuellement sur la map : ${data.value}`;
+      });
+  </script>
 
-<h2>📜 Codes Expirés</h2>
-<div class="code-container">
-<p>526497, 9586, 2553, 7389, 9452, 1442, 9231, 6393, 3632, 3005, 9207676, 2388, 7346, 1825, 1912, 5289, 1507, 0108, 3000, 9547, 6759</p>
-<p>Si un code ne fonctionne plus, c’est normal, il a été supprimé.</p>
-</div>
+  <h2>💻 Comment utiliser les codes ?</h2>
+  <p>Allez au terminal numérique ou à côté de la roue Galaxy Spin. Tapez le code et validez-le.</p>
 
-<h2>🗺️ État de la map</h2>
-<div class="map-status">
-<ul>
-<li><strong>Zone centrale :</strong> Terminal numérique et roue Galaxy Spin</li>
-<li><strong>Zone Brainrot :</strong> Brainrots apparaissent toutes les 5 min</li>
-<li><strong>Zone machine :</strong> Machine d'amélioration</li>
-<li><strong>Zone Ferinsini Luckini :</strong> Zone rare avec Brainrots spéciaux</li>
-</ul>
-</div>
+  <h2>📜 Codes Utilisables</h2>
+  <div class="code-container">
+    <p>(NEW) 651312 → Fait apparaître un Ferinsini Luckini</p>
+    <p>(NEW) 410592 → Brainrot Secret donnée dans la machine d'amélioration</p>
+    <p>(NEW) 3428 → Passe le temps de la machine d'amélioration</p>
+    <p>536736 → Brainrot Secret donnée dans la machine d'amélioration</p>
+    <p>3851 → Passe le temps de la machine d'amélioration</p>
+    <p>1003 → Passe le temps de la machine d'amélioration</p>
+    <p>1706 → Débloque un Brainrot God Lucky Rot</p>
+    <p>8257 → Lucky Rot Brainrot God</p>
+    <p>5269 → Fait apparaître un Brainrot God</p>
+  </div>
 
-<p id="adminToggle">🔒 Accès Admin</p>
+  <h2>📜 Codes Expirés</h2>
+  <div class="code-container">
+    <p>526497, 9586, 2553, 7389, 9452, 1442, 9231, 6393, 3632, 3005, 9207676, 2388, 7346, 1825, 1912, 5289, 1507, 0108, 3000, 9547, 6759</p>
+    <p>Si un code ne fonctionne plus, c’est normal, il a été supprimé.</p>
+  </div>
 
-<div id="adminLogin" style="display:none;">
-<h2>🔒 Code Admin</h2>
-<input type="password" id="adminCode" placeholder="Entrez le code admin">
-<button id="loginBtn">Valider</button>
-<p id="loginMessage" style="color:#ff5555;"></p>
-</div>
+  <h2>🗺️ État de la map</h2>
+  <div class="map-status">
+    <p>Zone centrale : Terminal numérique et roue Galaxy Spin</p>
+    <p>Zone Brainrot : Brainrots normaux apparaissent toutes les 5 minutes</p>
+    <p>Zone machine d’amélioration : Machine fonctionnelle, peut être accélérée avec les codes</p>
+    <p>Zone Ferinsini Luckini : Zone rare avec Brainrots spéciaux</p>
+  </div>
 
-<!-- Commentaires privés -->
-<div class="comment-section">
-<h2>💬 Journal privé admin</h2>
-<form id="commentForm">
-<input type="text" id="pseudo" placeholder="Pseudo" required>
-<input type="text" id="code" placeholder="Code testé" required>
-<textarea id="message" placeholder="Commentaire" rows="3" required></textarea>
-<button type="submit">Ajouter commentaire</button>
-</form>
-<div id="commentsList"></div>
-</div>
+  <h2>💬 Commentaires des joueurs</h2>
+  <div class="comment-section">
+    <div id="comments"></div>
+    <input id="username" placeholder="Ton pseudo">
+    <textarea id="message" placeholder="Ton message..."></textarea>
+    <button onclick="addComment()">Envoyer</button>
+  </div>
 
-<!-- Commentaires publics -->
-<div class="comment-section">
-<h2>💬 Retours des joueurs</h2>
-<form id="publicForm">
-<input type="text" id="visitorName" placeholder="Pseudo" required>
-<textarea id="visitorMessage" placeholder="Votre commentaire" rows="2" required></textarea>
-<button type="submit">Publier</button>
-</form>
-<div id="publicComments"></div>
-</div>
+  <div id="adminLogin" style="display:none;">
+    <h3>🔐 Espace Admin</h3>
+    <div id="adminComments"></div>
+  </div>
 
-</div>
+  <script>
+    // ======= COMMENTAIRES PUBLICS =======
+    let publicComments = JSON.parse(localStorage.getItem('publicComments') || '[]');
 
-<script>
-// Compteur joueurs (placeholder)
-document.getElementById('playerCount').textContent = "Joueurs actuellement sur la map : 62818";
+    function renderComments() {
+      const cDiv = document.getElementById('comments');
+      cDiv.innerHTML = '';
+      publicComments.forEach((c, i) => {
+        const div = document.createElement('div');
+        div.className = 'comment';
+        div.innerHTML = `<strong>${c.user}</strong> : ${c.msg}`;
+        cDiv.appendChild(div);
+      });
+      localStorage.setItem('publicComments', JSON.stringify(publicComments));
+    }
 
-// Toggle admin form
-const adminToggle = document.getElementById('adminToggle');
-const adminLoginDiv = document.getElementById('adminLogin');
-adminToggle.addEventListener('click', ()=>{ adminLoginDiv.style.display = adminLoginDiv.style.display === "none" ? "block" : "none"; });
+    function addComment() {
+      const user = document.getElementById('username').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      if (!user || !msg) return alert('Remplis ton pseudo et ton message !');
+      publicComments.push({ user, msg });
+      renderComments();
+      document.getElementById('message').value = '';
+    }
 
-// Admin login
-let isAdmin=false;
-const loginBtn=document.getElementById('loginBtn');
-const loginMessage=document.getElementById('loginMessage');
-const adminCodeInput=document.getElementById('adminCode');
+    renderComments();
 
-loginBtn.addEventListener('click',()=>{
-  if(adminCodeInput.value==="2711"){
-    isAdmin=true;
-    loginMessage.textContent="Accès admin activé !";
-    loginMessage.style.color="#00ff99";
-    adminLoginDiv.style.display="none";
-    const comments=document.querySelectorAll('.comment-card');
-    comments.forEach(c=>{
-      if(!c.querySelector('.delete-btn')){
-        const delBtn=document.createElement('button');
-        delBtn.textContent="Supprimer"; delBtn.classList.add('delete-btn');
-        delBtn.addEventListener('click',()=>{ c.remove(); });
-        c.appendChild(delBtn);
+    // ======= ADMIN SECRET =======
+    const secretEmoji = document.createElement('span');
+    secretEmoji.innerText = '🧠';
+    secretEmoji.style.cursor = 'pointer';
+    secretEmoji.title = 'Zone secrète';
+    secretEmoji.onclick = () => {
+      const code = prompt("Entre le code admin :");
+      if (code === "2711") {
+        document.getElementById('adminLogin').style.display = 'block';
+        loadAdminComments();
+      } else {
+        alert("Code incorrect !");
       }
-    });
-  } else { loginMessage.textContent="Code incorrect !"; }
-});
+    };
+    document.body.appendChild(secretEmoji);
 
-// Journal privé admin (LocalStorage)
-const form=document.getElementById('commentForm');
-const commentsList=document.getElementById('commentsList');
-let savedComments = JSON.parse(localStorage.getItem('comments')) || [];
-savedComments.forEach(c=>addCommentToPage(c));
+    let adminComments = JSON.parse(localStorage.getItem('adminComments') || '[]');
 
-function addCommentToPage(c){
-  const card=document.createElement('div'); card.classList.add('comment-card');
-  card.innerHTML=`<strong>${c.pseudo}</strong> a testé le code <em>${c.code}</em> : ${c.message}`;
-  if(isAdmin){
-    const delBtn=document.createElement('button');
-    delBtn.textContent="Supprimer"; delBtn.classList.add('delete-btn');
-    delBtn.addEventListener('click',()=>{
-      card.remove();
-      const index=savedComments.findIndex(x=>x.pseudo===c.pseudo && x.code===c.code && x.message===c.message);
-      if(index>-1){ savedComments.splice(index,1); localStorage.setItem('comments',JSON.stringify(savedComments)); }
-    });
-    card.appendChild(delBtn);
-  }
-  commentsList.appendChild(card);
-}
-
-form.addEventListener('submit', function(e){
-  e.preventDefault();
-  const pseudo=document.getElementById('pseudo').value;
-  const code=document.getElementById('code').value;
-  const message=document.getElementById('message').value;
-  const comment={pseudo,code,message};
-  addCommentToPage(comment);
-  savedComments.push(comment);
-  localStorage.setItem('comments',JSON.stringify(savedComments));
-  form.reset();
-});
-
-// Commentaires publics simples
-const publicForm=document.getElementById('publicForm');
-const publicComments=document.getElementById('publicComments');
-let publicSaved=[];
-
-publicForm.addEventListener('submit', function(e){
-  e.preventDefault();
-  const name=document.getElementById('visitorName').value;
-  const message=document.getElementById('visitorMessage').value;
-  const card=document.createElement('div'); card.classList.add('comment-card');
-  card.innerHTML=`<strong>${name}</strong> : ${message}`;
-  publicComments.appendChild(card);
-  publicSaved.push({name,message});
-  publicForm.reset();
-});
-</script>
-
+    function loadAdminComments() {
+      const div = document.getElementById('adminComments');
+      div.innerHTML = '';
+      adminComments.forEach((c, i) => {
+        const cm = document.createElement('div');
+        cm.className = 'comment';
+        cm.innerHTML = `${c}`;
+        const delBtn = document.createElement('button');
+        delBtn.className = 'delete-btn';
+        delBtn.textContent = 'Supprimer';
+        delBtn.onclick = () => {
+          adminComments.splice(i, 1);
+          localStorage.setItem('adminComments', JSON.stringify(adminComments));
+          loadAdminComments();
+        };
+        cm.appendChild(delBtn);
+        div.appendChild(cm);
+      });
+      const textarea = document.createElement('textarea');
+      textarea.placeholder = "Note admin...";
+      const addBtn = document.createElement('button');
+      addBtn.textContent = "Ajouter au journal";
+      addBtn.onclick = () => {
+        adminComments.push(textarea.value);
+        localStorage.setItem('adminComments', JSON.stringify(adminComments));
+        loadAdminComments();
+      };
+      div.appendChild(textarea);
+      div.appendChild(addBtn);
+    }
+  </script>
+</div>
 </body>
 </html>
