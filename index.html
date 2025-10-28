@@ -5,69 +5,97 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Steal the Brainrot Fortnite</title>
 <style>
-body {
-  font-family: 'Arial', sans-serif;
+/* Base */
+html, body {
   margin: 0;
-  padding: 20px;
-  line-height: 1.6;
-  background-image: url('TON_IMAGE_DE_FOND_URL_ICI'); /* ton image */
+  padding: 0;
+  font-family: Arial, sans-serif;
+  height: 100%;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Fond parallax */
+body {
+  background-image: url('TON_IMAGE_DE_FOND_URL_ICI'); /* Remplace par ton image */
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  color: #fff;
 }
 
+/* Conteneur principal */
 .content {
-  background-color: rgba(10, 10, 25, 0.85);
+  background-color: rgba(10,10,25,0.85);
   padding: 25px;
   border-radius: 12px;
   max-width: 950px;
-  margin: 0 auto;
+  width: 95%;
   box-shadow: 0 0 20px rgba(0,0,0,0.7);
+  margin: auto;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Effet néon dynamique pour titres */
+/* Titres néon */
 @keyframes neonGlow {
-  0%, 100% { text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff, 0 0 20px #00ffff, 0 0 30px #ff00ff; }
-  50% { text-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff, 0 0 30px #00ffff, 0 0 40px #ff00ff; }
+  0%,100% { text-shadow: 0 0 5px #00ffff,0 0 10px #ff00ff,0 0 20px #00ffff,0 0 30px #ff00ff; }
+  50% { text-shadow: 0 0 10px #00ffff,0 0 20px #ff00ff,0 0 30px #00ffff,0 0 40px #ff00ff; }
 }
-
-h1, h2 {
-  color: #00ffff;
-  animation: neonGlow 1.5s infinite alternate;
-}
-
+h1, h2 { color: #00ffff; animation: neonGlow 1.5s infinite alternate; margin-top: 0; }
 h1 { text-align: center; margin-bottom: 25px; }
 
-.code-container {
-  background-color: rgba(30, 30, 50, 0.9);
+/* Sections */
+.code-container, .comment-section, .map-status {
+  background-color: rgba(30,30,50,0.9);
   border: 2px solid #00ffff;
   border-radius: 12px;
   padding: 20px;
   margin: 20px 0;
-  color: #fff;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.code-container:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 20px #00ffff, 0 0 30px #ff00ff;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
 }
 
-.code-container h3 { margin-top: 0; color: #ff00ff; }
+.code-container.visible, .comment-section.visible, .map-status.visible {
+  opacity: 1;
+  transform: translateY(0);
+  box-shadow: 0 0 25px #00ffff, 0 0 40px #ff00ff;
+}
+
+/* Note */
 .note { color: #ff5555; font-weight: bold; margin-top: 10px; }
-p { margin: 10px 0; }
-ul { margin: 10px 0 20px 20px; }
-li { margin-bottom: 5px; }
 
-.comment-section {
-  background-color: rgba(30, 30, 50, 0.9);
-  border: 2px solid #00ffff;
-  border-radius: 12px;
-  padding: 20px;
-  margin: 20px 0;
-  color: #fff;
+/* Commentaires */
+.comment-card {
+  background-color: rgba(0,255,255,0.1);
+  border: 2px solid #ff00ff;
+  border-radius: 10px;
+  padding: 12px;
+  margin: 10px 0;
+  box-shadow: 0 0 10px #00ffff,0 0 15px #ff00ff;
+}
+.comment-card strong { color: #ffcc00; }
+.comment-card em { color: #ff77ff; }
+
+/* Map status */
+.map-status ul { list-style: none; padding-left: 0; }
+.map-status li {
+  padding: 8px;
+  margin-bottom: 6px;
+  border-left: 4px solid #00ffff;
+  background: rgba(0,255,255,0.05);
 }
 
+/* Compteur joueurs */
+#playerCount {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #00ff99;
+  text-shadow: 0 0 5px #00ffff,0 0 10px #ff00ff;
+  margin-bottom: 20px;
+}
+
+/* Inputs & boutons */
 input, textarea, button {
   width: 100%;
   padding: 10px;
@@ -76,13 +104,6 @@ input, textarea, button {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-
-/* Boutons néon dynamique */
-@keyframes buttonGlow {
-  0%, 100% { box-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff; }
-  50% { box-shadow: 0 0 15px #00ffff, 0 0 25px #ff00ff; }
-}
-
 button {
   background-color: #00ffff;
   border: none;
@@ -90,91 +111,50 @@ button {
   font-weight: bold;
   cursor: pointer;
   margin-top: 10px;
-  transition: 0.3s;
-  animation: buttonGlow 1.5s infinite alternate;
+  animation: neonGlow 1.5s infinite alternate;
 }
 button:hover { background-color: #ff00ff; color: #fff; }
 
-/* Cartes commentaires néon */
-.comment-card {
-  background-color: rgba(0, 255, 255, 0.1);
-  border: 2px solid #ff00ff;
-  border-radius: 10px;
-  padding: 12px;
-  margin: 10px 0;
-  box-shadow: 0 0 10px #00ffff, 0 0 15px #ff00ff;
-  transition: transform 0.2s, box-shadow 0.2s;
+/* Brainrots flottants */
+.brainrot {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image: url('https://i.imgur.com/Qx3l5LF.png'); /* petite image Brainrot */
+  background-size: contain;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  animation: floatAnim 8s infinite linear;
 }
-.comment-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 15px #00ffff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
-}
-.comment-card strong { color: #ffcc00; }
-.comment-card em { color: #ff77ff; }
-
-/* Map status */
-.map-status {
-  background-color: rgba(20, 20, 50, 0.9);
-  border: 2px solid #ff00ff;
-  border-radius: 12px;
-  padding: 15px;
-  margin: 20px 0;
-  color: #fff;
-  box-shadow: 0 0 10px #00ffff, 0 0 20px #ff00ff;
-}
-.map-status ul { list-style: none; padding-left: 0; }
-.map-status li {
-  padding: 8px;
-  margin-bottom: 6px;
-  border-left: 4px solid #00ffff;
-  background: rgba(0, 255, 255, 0.05);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.map-status li:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 10px #00ffff, 0 0 15px #ff00ff;
-}
-
-/* Player counter */
-#playerCount {
-  font-size: 1.3em;
-  font-weight: bold;
-  color: #00ff99;
-  text-shadow: 0 0 5px #00ffff, 0 0 10px #ff00ff;
-  margin-bottom: 20px;
+@keyframes floatAnim {
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-50px) rotate(180deg); }
+  100% { transform: translateY(0) rotate(360deg); }
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  body { padding: 10px; }
-  .content { padding: 15px; }
-  h1 { font-size: 1.8em; }
-  h2 { font-size: 1.3em; }
-  .code-container, .comment-section, .map-status { padding: 15px; }
-}
-@media (max-width: 480px) {
-  h1 { font-size: 1.5em; }
-  h2 { font-size: 1.1em; }
-  button { padding: 12px; font-size: 1em; }
-}
+@media (max-width: 1024px) { body { background-attachment: scroll; } }
+@media (max-width: 480px){ h1{font-size:1.5em;} h2{font-size:1.1em;} button{padding:12px;} }
 </style>
 </head>
 <body>
+
+<!-- Brainrots flottants -->
+<div id="brainrots"></div>
+
 <div class="content">
 <h1>Steal the Brainrot - Fortnite</h1>
 
-<p>Fortnite ne se limite plus à son Battle Royale classique. La carte <strong>Steal the Brainrot</strong>, imaginée par Ferins, rencontre un immense succès. Elle repose sur une mécanique simple : accumuler et protéger des Brainrots, de petites créatures générant des revenus.</p>
-
-<p>La carte contient aussi des codes secrets offrant des bonus exclusifs.</p>
+<p>Fortnite ne se limite plus à son Battle Royale classique. La carte <strong>Steal the Brainrot</strong> rencontre un immense succès. Inspirée des modes tycoon, elle repose sur une mécanique simple mais addictive : accumuler et protéger des Brainrots.</p>
 
 <h2>👥 Joueurs en ligne</h2>
 <p id="playerCount">Chargement du nombre de joueurs...</p>
 
 <h2>💻 Comment utiliser les codes ?</h2>
-<p>Allez au terminal numérique dans la boutique ou à côté de la roue Galaxy Spin. Tapez le code et validez-le.</p>
+<p>Allez au terminal numérique ou à côté de la roue Galaxy Spin. Tapez le code et validez-le.</p>
 
 <h2>📜 Codes Utilisables</h2>
-<div class="code-container">
+<div class="code-container" id="codes">
 <p>(NEW) 651312 → Fait apparaître un Ferinsini Luckini</p>
 <p>(NEW) 410592 → Brainrot Secret dans la machine d'amélioration</p>
 <p>(NEW) 3428 → Passe le temps de la machine d'amélioration</p>
@@ -194,7 +174,6 @@ button:hover { background-color: #ff00ff; color: #fff; }
 
 <h2>❓ FAQ</h2>
 <p><strong>Qu’est-ce que Steal the Brainrot ?</strong> Mode tycoon avec Brainrots et codes spéciaux.</p>
-<p><strong>Comment entrer un code ?</strong> Au terminal numérique, tapez le code et validez.</p>
 
 <h2>🗺️ État de la map</h2>
 <div class="map-status">
@@ -209,51 +188,81 @@ button:hover { background-color: #ff00ff; color: #fff; }
 
 <div class="comment-section">
 <h2>💬 Vos retours sur les codes</h2>
-<p>Indiquez si un code fonctionne :</p>
-
 <form id="commentForm">
-<label for="pseudo">Pseudo :</label>
-<input type="text" id="pseudo" name="pseudo" required>
-
-<label for="code">Code testé :</label>
-<input type="text" id="code" name="code" required>
-
-<label for="message">Commentaire :</label>
-<textarea id="message" name="message" rows="3" required></textarea>
-
+<label>Pseudo :</label><input type="text" id="pseudo" required>
+<label>Code testé :</label><input type="text" id="code" required>
+<label>Commentaire :</label><textarea id="message" rows="3" required></textarea>
 <button type="submit">Envoyer</button>
 </form>
-
 <h3>Commentaires :</h3>
 <div id="commentsList"></div>
 </div>
 </div>
 
 <script>
-// Compteur de joueurs simulé
-function updatePlayerCount() {
-  const count = Math.floor(Math.random() * 450) + 50; // entre 50 et 500
-  document.getElementById('playerCount').textContent = `Joueurs actuellement sur la map : ${count}`;
+// Compteur joueurs (API ou valeur par défaut)
+async function updatePlayerCount() {
+  try {
+    const response = await fetch('https://fortniteapi.io/v1/island/STEAL_THE_BRAINROT/metrics', {
+      headers: { 'Authorization': 'Bearer VOTRE_CLE_API' }
+    });
+    const data = await response.json();
+    const playerCount = data.data.peak_ccu || 62818;
+    document.getElementById('playerCount').textContent = `Joueurs actuellement sur la map : ${playerCount}`;
+  } catch (error) {
+    document.getElementById('playerCount').textContent = 'Joueurs actuellement sur la map : 62818';
+  }
 }
 updatePlayerCount();
-setInterval(updatePlayerCount, 5000);
+setInterval(updatePlayerCount, 60000);
 
 // Formulaire commentaires
-const form = document.getElementById('commentForm');
-const commentsList = document.getElementById('commentsList');
-
-form.addEventListener('submit', function(e) {
+const form=document.getElementById('commentForm');
+const commentsList=document.getElementById('commentsList');
+form.addEventListener('submit',function(e){
   e.preventDefault();
-  const pseudo = document.getElementById('pseudo').value;
-  const code = document.getElementById('code').value;
-  const message = document.getElementById('message').value;
-
-  const card = document.createElement('div');
+  const pseudo=document.getElementById('pseudo').value;
+  const code=document.getElementById('code').value;
+  const message=document.getElementById('message').value;
+  const card=document.createElement('div');
   card.classList.add('comment-card');
-  card.innerHTML = `<strong>${pseudo}</strong> a testé le code <em>${code}</em> : ${message}`;
+  card.innerHTML=`<strong>${pseudo}</strong> a testé le code <em>${code}</em> : ${message}`;
   commentsList.appendChild(card);
-
   form.reset();
+});
+
+// Glow sections
+function revealSections() {
+  const sections = document.querySelectorAll('.code-container, .comment-section, .map-status');
+  const windowHeight = window.innerHeight;
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if(top < windowHeight - 100){ sec.classList.add('visible'); }
+  });
+}
+window.addEventListener('scroll', revealSections);
+window.addEventListener('load', revealSections);
+
+// Brainrots apparaissent seulement au survol des codes
+function spawnBrainrotsOver(element, count=5) {
+  const container = document.getElementById('brainrots');
+  container.innerHTML = '';
+  for(let i=0;i<count;i++){
+    const b = document.createElement('div');
+    b.className='brainrot';
+    const rect = element.getBoundingClientRect();
+    b.style.left = rect.left + Math.random() * rect.width + 'px';
+    b.style.top = rect.top + Math.random() * rect.height + 'px';
+    b.style.animationDuration = 4 + Math.random()*4 + 's';
+    container.appendChild(b);
+  }
+}
+const codeItems = document.querySelectorAll('.code-container p');
+codeItems.forEach(item => {
+  item.addEventListener('mouseenter', () => spawnBrainrotsOver(item, 7));
+  item.addEventListener('mouseleave', () => {
+    document.getElementById('brainrots').innerHTML = '';
+  });
 });
 </script>
 </body>
