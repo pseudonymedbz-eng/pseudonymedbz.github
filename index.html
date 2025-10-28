@@ -96,7 +96,7 @@ button{background:#00ffff; color:#000; font-weight:bold; cursor:pointer;}
   <div class="comment-section">
     <div id="comments"></div>
     <input id="username" placeholder="Ton pseudo">
-    <textarea id="message" placeholder="Ton message..."></textarea>
+    <textarea id="message" placeholder="Ton message sur les codes..."></textarea>
     <button onclick="addComment()">Envoyer</button>
   </div>
 
@@ -115,157 +115,145 @@ button{background:#00ffff; color:#000; font-weight:bold; cursor:pointer;}
 
 <div id="brainrot-emoji" title="Menu admin secret">🧠</div>
 
-<script>
-// ---------------- COMMENTAIRES ----------------
-const KEY_PUBLIC='publicComments_v1';
-let publicComments = JSON.parse(localStorage.getItem(KEY_PUBLIC)||'[]');
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+  import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
 
-function renderComments(){
-  const cDiv=document.getElementById('comments'); cDiv.innerHTML='';
-  publicComments.forEach(c=>{
-    const div=document.createElement('div'); div.className='comment';
-    div.innerHTML=`<strong>${c.user}</strong> : ${c.msg}`;
-    cDiv.appendChild(div);
-  });
-  localStorage.setItem(KEY_PUBLIC, JSON.stringify(publicComments));
-}
-function addComment(){
-  const user=document.getElementById('username').value.trim();
-  const msg=document.getElementById('message').value.trim();
-  if(!user||!msg){alert('Remplis pseudo et message !'); return;}
-  publicComments.push({user,msg});
-  renderComments();
-  document.getElementById('message').value='';
-  document.getElementById('username').value='';
-}
-renderComments();
+  const firebaseConfig = {
+    apiKey: "AIzaSyAAc2r6FQw66MrkUNmfEhw_RQq2gqJmb_o",
+    authDomain: "stealthebrainrot-fortnite.firebaseapp.com",
+    projectId: "stealthebrainrot-fortnite",
+    storageBucket: "stealthebrainrot-fortnite.firebasestorage.app",
+    messagingSenderId: "1027380486749",
+    appId: "1:1027380486749:web:da177abdbbd569947fa3b4",
+    measurementId: "G-6L2XGK4282"
+  };
 
-// ---------------- ADMIN ----------------
-const KEY_ADMIN='adminComments_v1';
-const KEY_ANN='annonces_v1';
-let adminComments=JSON.parse(localStorage.getItem(KEY_ADMIN)||'[]');
-let annonces=JSON.parse(localStorage.getItem(KEY_ANN)||'[]');
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
 
-const brainrot = document.getElementById('brainrot-emoji');
-const adminDiv = document.getElementById('adminLogin');
+  // ---------------- COMMENTAIRES PUBLICS ----------------
+  const commentsRef = ref(db, 'comments');
 
-let visitorValue = 0;
-fetch('https://api.countapi.xyz/hit/stealthebrainrot/visits')
-  .then(r=>r.json()).then(d=>{ visitorValue=d.value; });
-
-function showVisitorCountForAdmin(){
-  const p = document.getElementById('visitorCount');
-  p.style.display='block';
-  p.innerText=`Joueurs actuellement sur la map : ${visitorValue}`;
-}
-
-function openAdmin(){
-  const code=prompt("Code admin :");
-  if(code==='2711'){
-    adminDiv.style.display='block';
-    loadAdminComments();
-    renderAnnonces();
-    showVisitorCountForAdmin();
-  } else alert('Code incorrect !');
-}
-
-brainrot.addEventListener('click', openAdmin);
-document.addEventListener('keydown', (e)=>{
-  if(e.key==='a' && e.ctrlKey){ openAdmin(); }
-});
-
-function loadAdminComments(){
-  const div=document.getElementById('adminComments'); div.innerHTML='';
-  adminComments.forEach((c,i)=>{
-    const d=document.createElement('div'); d.className='comment';
-    d.innerHTML=c;
-    const del=document.createElement('button'); del.className='delete-btn'; del.textContent='Supprimer';
-    del.onclick=()=>{adminComments.splice(i,1); localStorage.setItem(KEY_ADMIN,JSON.stringify(adminComments)); loadAdminComments();}
-    d.appendChild(del);
-    div.appendChild(d);
-  });
-  const ta=document.createElement('textarea'); ta.placeholder='Nouvelle note';
-  const btn=document.createElement('button'); btn.textContent='Ajouter note';
-  btn.onclick=()=>{
-    if(ta.value.trim()===''){alert('Écris quelque chose'); return;}
-    adminComments.push(ta.value.trim());
-    localStorage.setItem(KEY_ADMIN,JSON.stringify(adminComments));
-    ta.value=''; loadAdminComments();
-  }
-  div.appendChild(ta); div.appendChild(btn);
-}
-
-// ---------------- ANNONCES ----------------
-const banner=document.getElementById('annonceBanner');
-const titleEl=document.getElementById('annonceBannerTitle');
-const msgEl=document.getElementById('annonceBannerMsg');
-const annDiv=document.getElementById('annoncesDiv');
-let annTimer;
-
-function renderAnnonces(){
-  if(annonces.length===0){banner.style.display='none'; annDiv.innerHTML=''; return;}
-  const last=annonces[annonces.length-1];
-  banner.style.display='block';
-  titleEl.textContent=last.titre;
-  let remaining=last.countdown||0;
-  clearInterval(annTimer);
-  function updateBanner(){
-    if(remaining>0){
-      msgEl.textContent=`${last.msg} | Temps restant : ${formatTime(remaining)}`;
-      remaining--; 
-    } else { msgEl.textContent=last.msg; clearInterval(annTimer); banner.style.display='none'; }
-  }
-  updateBanner();
-  if(remaining>0){ annTimer=setInterval(updateBanner,1000); }
-
-  annDiv.innerHTML='<h3>Historique des annonces</h3>';
-  annonces.slice().reverse().forEach((a,idx)=>{
-    const box=document.createElement('div'); box.className='annonce';
-    box.innerHTML=`<strong>Admin — ${a.titre}</strong><br>${a.msg}`;
-    if(adminDiv.style.display==='block'){
-      const del=document.createElement('button'); del.className='delete-btn'; del.textContent='Supprimer';
-      del.onclick=()=>{annonces.splice(annonces.length-1-idx,1); localStorage.setItem(KEY_ANN,JSON.stringify(annonces)); renderAnnonces();}
-      box.appendChild(del);
-    }
-    annDiv.appendChild(box);
-  });
-}
-
-document.getElementById('publishAnnonce').addEventListener('click',()=>{
-  const t=document.getElementById('annTitle').value.trim();
-  const m=document.getElementById('annMsg').value.trim();
-  let c=parseInt(document.getElementById('annCountdown').value);
-  if(!t||!m){alert('Titre et message obligatoires'); return;}
-  if(isNaN(c)||c<0) c=0;
-  annonces.push({titre:t,msg:m,countdown:c});
-  localStorage.setItem(KEY_ANN,JSON.stringify(annonces));
-  document.getElementById('annTitle').value='';
-  document.getElementById('annMsg').value='';
-  document.getElementById('annCountdown').value='';
-  renderAnnonces();
-});
-
-function formatTime(s){
-  const h=Math.floor(s/3600); const m=Math.floor((s%3600)/60); const sec=s%60;
-  return `${h>0?h+'h ':''}${m>0?m+'m ':''}${sec}s`;
-}
-
-// ---------------- NOTIFICATION +1 VISITEUR ----------------
-let lastVisitorValue = visitorValue;
-setInterval(()=>{
-  fetch('https://api.countapi.xyz/get/stealthebrainrot/visits')
-    .then(r=>r.json())
-    .then(d=>{
-      if(d.value > lastVisitorValue){
-        lastVisitorValue = d.value;
-        if(adminDiv.style.display==='block'){
-          alert('Nouveau visiteur ! +1');
-          visitorValue = d.value;
-          showVisitorCountForAdmin();
-        }
-      }
+  function renderCommentsFirebase(data){
+    const cDiv=document.getElementById('comments');
+    cDiv.innerHTML='';
+    data.forEach(d=>{
+      const val=d.val();
+      const div=document.createElement('div');
+      div.className='comment';
+      div.id=d.key;
+      div.innerHTML=`<strong>${val.user}</strong> : ${val.msg}`;
+      cDiv.appendChild(div);
     });
-},10000);
+  }
+
+  onValue(commentsRef, snapshot=>{
+    const data=snapshot.exists()? Object.entries(snapshot.val()).map(([key,val])=>({key,val})) : [];
+    renderCommentsFirebase(data.map(d=>({key:d.key,val:d.val})));
+  });
+
+  window.addComment = function(){
+    const user=document.getElementById('username').value.trim();
+    const msg=document.getElementById('message').value.trim();
+    if(!user||!msg){alert('Remplis pseudo et message !'); return;}
+    push(commentsRef, {user,msg});
+    document.getElementById('message').value='';
+    document.getElementById('username').value='';
+  }
+
+  // ---------------- ADMIN ----------------
+  const adminDiv = document.getElementById('adminLogin');
+  const brainrot = document.getElementById('brainrot-emoji');
+
+  function openAdmin(){
+    const code=prompt("Code admin :");
+    if(code==='2711'){
+      adminDiv.style.display='block';
+    } else alert('Code incorrect !');
+  }
+
+  brainrot.addEventListener('click', openAdmin);
+  document.addEventListener('keydown', (e)=>{ if(e.key==='a' && e.ctrlKey){ openAdmin(); } });
+
+  // Supprimer commentaire en admin
+  function loadAdminComments(){
+    const div=document.getElementById('adminComments'); div.innerHTML='';
+    onValue(commentsRef, snapshot=>{
+      const data=snapshot.exists()? Object.entries(snapshot.val()).map(([key,val])=>({key,val})) : [];
+      div.innerHTML='';
+      data.forEach(d=>{
+        const c=d.val;
+        const divC=document.createElement('div'); divC.className='comment';
+        divC.innerHTML=`<strong>${c.user}</strong> : ${c.msg}`;
+        const del=document.createElement('button'); del.className='delete-btn'; del.textContent='Supprimer';
+        del.onclick=()=>{ remove(ref(db,'comments/'+d.key)); }
+        divC.appendChild(del); div.appendChild(divC);
+      });
+    });
+  }
+
+  adminDiv.addEventListener('mouseenter', loadAdminComments);
+
+  // ---------------- ANNONCES ----------------
+  const KEY_ANN='annonces_v1';
+  let annonces=JSON.parse(localStorage.getItem(KEY_ANN)||'[]');
+  const banner=document.getElementById('annonceBanner');
+  const titleEl=document.getElementById('annonceBannerTitle');
+  const msgEl=document.getElementById('annonceBannerMsg');
+  const annDiv=document.getElementById('annoncesDiv');
+  let annTimer;
+
+  function formatTime(s){
+    const h=Math.floor(s/3600); const m=Math.floor((s%3600)/60); const sec=s%60;
+    return `${h>0?h+'h ':''}${m>0?m+'m ':''}${sec}s`;
+  }
+
+  function renderAnnonces(){
+    if(annonces.length===0){banner.style.display='none'; annDiv.innerHTML=''; return;}
+    const last=annonces[annonces.length-1];
+    banner.style.display='block';
+    titleEl.textContent=last.titre;
+    let remaining=last.countdown||0;
+    clearInterval(annTimer);
+    function updateBanner(){
+      if(remaining>0){
+        msgEl.textContent=`${last.msg} | Temps restant : ${formatTime(remaining)}`;
+        remaining--; 
+      } else { msgEl.textContent=last.msg; clearInterval(annTimer); banner.style.display='none'; }
+    }
+    updateBanner();
+    if(remaining>0){ annTimer=setInterval(updateBanner,1000); }
+
+    annDiv.innerHTML='<h3>Historique des annonces</h3>';
+    annonces.slice().reverse().forEach((a,idx)=>{
+      const box=document.createElement('div'); box.className='annonce';
+      box.innerHTML=`<strong>Admin — ${a.titre}</strong><br>${a.msg}`;
+      if(adminDiv.style.display==='block'){
+        const del=document.createElement('button'); del.className='delete-btn'; del.textContent='Supprimer';
+        del.onclick=()=>{annonces.splice(annonces.length-1-idx,1); localStorage.setItem(KEY_ANN,JSON.stringify(annonces)); renderAnnonces();}
+        box.appendChild(del);
+      }
+      annDiv.appendChild(box);
+    });
+  }
+
+  document.getElementById('publishAnnonce').addEventListener('click',()=>{
+    const t=document.getElementById('annTitle').value.trim();
+    const m=document.getElementById('annMsg').value.trim();
+    let c=parseInt(document.getElementById('annCountdown').value);
+    if(!t||!m){alert('Titre et message obligatoires'); return;}
+    if(isNaN(c)||c<0) c=0;
+    annonces.push({titre:t,msg:m,countdown:c});
+    localStorage.setItem(KEY_ANN,JSON.stringify(annonces));
+    document.getElementById('annTitle').value='';
+    document.getElementById('annMsg').value='';
+    document.getElementById('annCountdown').value='';
+    renderAnnonces();
+  });
+
+  renderAnnonces();
 </script>
 </body>
 </html>
