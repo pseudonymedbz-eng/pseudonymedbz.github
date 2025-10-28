@@ -210,3 +210,50 @@ onValue(annoncesRef, snap=>{
   if(anns.length>0){
     const last = anns[anns.length-1];
     banner.style.display='block';
+    titleEl.textContent = last.titre;
+    let remaining = last.countdown||0;
+    clearInterval(annTimers[last.key]);
+    function updateBanner(){
+      if(remaining>0){
+        msgEl.textContent=`${last.msg} | Temps restant : ${remaining}s`;
+        remaining--;
+      } else {
+        msgEl.textContent=last.msg;
+        banner.style.display='none';
+        clearInterval(annTimers[last.key]);
+      }
+    }
+    updateBanner();
+    if(remaining>0) annTimers[last.key] = setInterval(updateBanner,1000);
+  } else banner.style.display='none';
+});
+
+document.getElementById('publishAnnonce').addEventListener('click',()=>{
+  const t = document.getElementById('annTitle').value.trim();
+  const m = document.getElementById('annMsg').value.trim();
+  const c = parseInt(document.getElementById('annCountdown').value)||0;
+  if(!t||!m){alert('Titre et message obligatoires'); return;}
+  push(annoncesRef,{titre:t,msg:m,countdown:c});
+  document.getElementById('annTitle').value='';
+  document.getElementById('annMsg').value='';
+  document.getElementById('annCountdown').value='';
+});
+
+// ---------------- NOTIFICATION +1 VISITEUR ----------------
+let lastVisitorValue = 0;
+get(visitorRef).then(snap=>{ lastVisitorValue = snap.val()||0; });
+setInterval(()=>{
+  get(visitorRef).then(snap=>{
+    const val = snap.val()||0;
+    if(val > lastVisitorValue){
+      lastVisitorValue = val;
+      if(adminDiv.style.display==='block'){
+        alert('+1 visiteur !');
+      }
+    }
+  });
+},10000);
+
+</script>
+</body>
+</html>
