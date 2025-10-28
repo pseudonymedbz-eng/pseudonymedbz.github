@@ -2,46 +2,15 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Image en fond seule</title>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      background-image: url('https://imgs.search.brave.com/bBUEdildaY55DxK5CHT-_OQru0quB6nTCYQLnLpU-28/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcm9n/YW1lZ3VpZGVzLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/NS8wNy9TdGVhbC1h/LUJyYWlucm90LUZv/cnRuaXRlLU9mZmlj/aWFsLUltYWdlLmpw/Zz9maXQ9OTAwLDUw/Ng');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-  </style>
-</head>
-<body>
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Steal a Brainrot — Codes & But du Jeu</title>
+  <title>Steal a Brainrot — Présentation du Jeu</title>
   <style>
-    /* Fond et style global */
+    /* Style général */
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #fff;
-      background-image: url('https://imgs.search.brave.com/bBUEdildaY55DxK5CHT-_OQru0quB6nTCYQLnLpU-28/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcm9n/YW1lZ3VpZGVzLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/NS8wNy9TdGVhbC1h/LUJyYWlucm90LUZv/cnRuaXRlLU9mZmlj/aWFsLUltYWdlLmpw/Zz9maXQ9OTAwLDUw/Ng');
+      background-image: url('https://imgs.search.brave.com/bBUEdildaY55DxK5CHT-_OQru0quB6nTCYQLnLpU-28/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcm9nYW1lZ3VpZGVzLmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAyNS8wNy9TdGVhbC1hLUJyYWlucm90LUZvcnRuaXRlLU9mZmljaWFsLUltYWdlLmpwZz9maXQ9OTAwLDUwNg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
@@ -51,6 +20,7 @@
       align-items: flex-start;
       padding: 40px 20px;
     }
+
     .container {
       background: rgba(0, 0, 0, 0.75);
       max-width: 700px;
@@ -60,11 +30,13 @@
       box-sizing: border-box;
       box-shadow: 0 0 15px rgba(255, 204, 0, 0.7);
     }
+
     h1 {
       text-align: center;
       color: #ffcc00;
       margin-bottom: 20px;
     }
+
     h2 {
       color: #ffcc00;
       border-bottom: 2px solid #ffcc00;
@@ -72,221 +44,42 @@
       margin-top: 30px;
       margin-bottom: 15px;
     }
+
     p {
       font-size: 1.1rem;
-      line-height: 1.5;
+      line-height: 1.6;
     }
-    .codes-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .code-item {
-      background: #333;
-      padding: 10px 15px;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      user-select: none;
-      transition: background 0.3s;
-      flex: 1 0 30%;
+
+    footer {
       text-align: center;
-      box-shadow: 0 0 5px #ffcc00;
-    }
-    .code-item:hover {
-      background: #ffcc00;
-      color: #000;
-      box-shadow: 0 0 10px #ffcc00;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
-    th, td {
-      padding: 12px 8px;
-      border: 1px solid #444;
-      text-align: left;
-    }
-    th {
-      background: #ffcc00;
-      color: #000;
-    }
-    td {
-      background: #222;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #aaa;
     }
   </style>
 </head>
 <body>
-
-<div class="container">
-  <h1>Steal a Brainrot — Codes & But du Jeu</h1>
-
-  <h2>But du jeu</h2>
-  <p>
-    Dans <strong>Steal a Brainrot</strong>, votre objectif est d'explorer la map Fortnite, collecter un maximum de Brainrots et d'objets rares tout en évitant les autres joueurs. Utilisez les codes disponibles pour débloquer des avantages temporaires et améliorez vos chances de victoire. Soyez stratégique, rapide, et ne laissez personne vous voler la victoire !
-  </p>
-
-  <h2>Codes à utiliser</h2>
-  <div class="codes-list" id="codes-list">
-    <div class="code-item" onclick="copyCode('1825')">1825</div>
-    <div class="code-item" onclick="copyCode('2388')">2388</div>
-    <div class="code-item" onclick="copyCode('5486')">5486</div>
-    <div class="code-item" onclick="copyCode('1912')">1912</div>
-    <div class="code-item" onclick="copyCode('1507')">1507</div>
-    <div class="code-item" onclick="copyCode('7346')">7346</div>
-    <div class="code-item" onclick="copyCode('3000')">3000</div>
-    <div class="code-item" onclick="copyCode('0108')">0108</div>
-    <div class="code-item" onclick="copyCode('5289')">5289</div>
-  </div>
-
-  <h2>Code & Effet</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>Code</th>
-        <th>Effet</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>6393</td><td>Faire apparaître un Brainrot God Luckyrot</td></tr>
-      <tr><td>1825</td><td>Faire apparaître un Brainrot God Luckyrot</td></tr>
-      <tr><td>2388</td><td>Faire apparaître un Brainrot God</td></tr>
-      <tr><td>0108</td><td>Doubler la chance serveur pendant 10 min</td></tr>
-      <tr><td>3005</td><td>Passer le temps de recharge de la machine</td></tr>
-      <tr><td>6741</td><td>Ajouter un secret à la machine de mise à niveau</td></tr>
-    </tbody>
-  </table>
-</div>
-
-<script>
-  function copyCode(code) {
-    navigator.clipboard.writeText(code).then(() => {
-      alert(`Code ${code} copié dans le presse-papier !`);
-    }).catch(() => {
-      alert('Impossible de copier le code, essaie manuellement.');
-    });
-  }
-</script>
-
-</body>
-</html>
-
-
-
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8" />
-<title>Index Brainrot - Trié</title>
-<style>
-  /* Image de fond pleine page */
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-image: url('https://imgs.search.brave.com/bBUEdildaY55DxK5CHT-_OQru0quB6nTCYQLnLpU-28/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcm9n/YW1lZ3VpZGVzLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAy/NS8wNy9TdGVhbC1h/LUJyYWlucm90LUZv/cnRuaXRlLU9mZmlj/aWFsLUltYWdlLmpw/Zz9maXQ9OTAwLDUw/Ng');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: #fff;
-  }
-
-  /* Fond semi-transparent derrière le tableau pour lisibilité */
-  .container {
-    max-width: 1200px;
-    margin: 50px auto;
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 10px;
-  }
-
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 14px;
-  }
-
-  th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
-  }
-
-  th {
-    background-color: #4CAF50;
-    color: white;
-  }
-
-  tbody tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  tbody tr:nth-child(odd) {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
-</style>
-</head>
-<body>
   <div class="container">
-    <h1>Personnages Brainrot triés par Argent / Seconde (Money Per Second)</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Nom</th>
-          <th>Rareté</th>
-          <th>Prix d'achat</th>
-          <th>Argent / Seconde</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Chillin chili</td><td>Secret</td><td>3,000,000,000</td><td>350,000,000</td></tr>
-        <tr><td>La Secret Combinasion</td><td>Secret</td><td>50,000,000,000</td><td>125,000,000</td></tr>
-        <tr><td>Trenostruzzo Turbo 3000</td><td>Brainrot God</td><td>25,000,000</td><td>150,000</td></tr>
-        <tr><td>Urubini Flamenguini</td><td>Brainrot God</td><td>30,000,000</td><td>150,000</td></tr>
-        <tr><td>Los Orcalitos</td><td>Brainrot God</td><td>45,000,000</td><td>235,000</td></tr>
-        <tr><td>Dug Dug Dug</td><td>Brainrot God</td><td>45,500,000</td><td>255,000</td></tr>
-        <!-- Ajoute ici les autres personnages -->
-      </tbody>
-    </table>
+    <h1>Steal a Brainrot — Présentation du Jeu</h1>
+
+    <h2>But du jeu</h2>
+    <p>
+      Dans <strong>Steal a Brainrot</strong>, votre objectif est d'explorer la carte Fortnite, 
+      collecter un maximum de Brainrots et d'objets rares tout en évitant les autres joueurs. 
+      Utilisez vos compétences et votre stratégie pour progresser, débloquer de nouveaux défis 
+      et viser la victoire suprême !
+    </p>
+
+    <h2>À propos</h2>
+    <p>
+      Ce site présente le jeu et sa communauté. Les anciennes sections contenant des codes ont été 
+      retirées pour garder la page claire et à jour. Restez connectés pour découvrir les futures 
+      mises à jour et fonctionnalités du jeu !
+    </p>
+
+    <footer>
+      © 2025 — Steal a Brainrot | Mis à jour par pseudonymedbz-eng
+    </footer>
   </div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.............
