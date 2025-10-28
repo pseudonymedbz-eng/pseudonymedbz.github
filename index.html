@@ -29,7 +29,17 @@ input, textarea, button{width:100%; padding:10px; margin-top:5px; border-radius:
 button{background:#00ffff; color:#000; font-weight:bold; cursor:pointer;}
 .delete-btn{background:#ff4444;color:#fff;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;margin-top:5px;}
 .comment{background: rgba(255,255,255,0.1); padding:10px; border-radius:8px; margin-bottom:10px;}
-#brainrot-emoji{position:fixed; bottom:20px; right:20px; font-size:28px; cursor:pointer;}
+#brainrot-emoji{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 36px;
+  cursor: pointer;
+  padding: 10px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  z-index: 9999;
+}
 #brainrot-emoji:hover{transform:scale(1.2);}
 .annonce {background-color: rgba(255,0,0,0.1); padding:10px; margin-bottom:10px; border-left:4px solid red;}
 </style>
@@ -50,7 +60,7 @@ button{background:#00ffff; color:#000; font-weight:bold; cursor:pointer;}
   <p>Fortnite ne se limite plus à son Battle Royale classique. La carte <strong>Steal the Brainrot</strong> rencontre un immense succès.</p>
 
   <h2>👥 Joueurs en ligne</h2>
-  <p id="visitorCount">Chargement...</p>
+  <p id="visitorCount" style="display:none;">Chargement...</p>
 
   <h2>💻 Comment utiliser les codes ?</h2>
   <p>Allez au terminal numérique ou à côté de la roue Galaxy Spin. Tapez le code et validez-le.</p>
@@ -139,13 +149,29 @@ let annonces=JSON.parse(localStorage.getItem(KEY_ANN)||'[]');
 const brainrot = document.getElementById('brainrot-emoji');
 const adminDiv = document.getElementById('adminLogin');
 
-brainrot.addEventListener('click',()=>{
+let visitorValue = 0;
+fetch('https://api.countapi.xyz/hit/stealthebrainrot/visits')
+  .then(r=>r.json()).then(d=>{ visitorValue=d.value; });
+
+function showVisitorCountForAdmin(){
+  const p = document.getElementById('visitorCount');
+  p.style.display='block';
+  p.innerText=`Joueurs actuellement sur la map : ${visitorValue}`;
+}
+
+function openAdmin(){
   const code=prompt("Code admin :");
   if(code==='2711'){
     adminDiv.style.display='block';
     loadAdminComments();
     renderAnnonces();
+    showVisitorCountForAdmin();
   } else alert('Code incorrect !');
+}
+
+brainrot.addEventListener('click', openAdmin);
+document.addEventListener('keydown', (e)=>{
+  if(e.key==='a' && e.ctrlKey){ openAdmin(); }
 });
 
 function loadAdminComments(){
@@ -192,7 +218,6 @@ function renderAnnonces(){
   updateBanner();
   if(remaining>0){ annTimer=setInterval(updateBanner,1000); }
 
-  // historique annonces
   annDiv.innerHTML='<h3>Historique des annonces</h3>';
   annonces.slice().reverse().forEach((a,idx)=>{
     const box=document.createElement('div'); box.className='annonce';
@@ -206,7 +231,6 @@ function renderAnnonces(){
   });
 }
 
-// publier annonce depuis admin
 document.getElementById('publishAnnonce').addEventListener('click',()=>{
   const t=document.getElementById('annTitle').value.trim();
   const m=document.getElementById('annMsg').value.trim();
@@ -226,10 +250,22 @@ function formatTime(s){
   return `${h>0?h+'h ':''}${m>0?m+'m ':''}${sec}s`;
 }
 
-// ---------------- VISITEURS ----------------
-fetch('https://api.countapi.xyz/hit/stealthebrainrot/visits').then(r=>r.json()).then(d=>{
-  document.getElementById('visitorCount').innerText=`Joueurs actuellement sur la map : ${d.value}`;
-});
+// ---------------- NOTIFICATION +1 VISITEUR ----------------
+let lastVisitorValue = visitorValue;
+setInterval(()=>{
+  fetch('https://api.countapi.xyz/get/stealthebrainrot/visits')
+    .then(r=>r.json())
+    .then(d=>{
+      if(d.value > lastVisitorValue){
+        lastVisitorValue = d.value;
+        if(adminDiv.style.display==='block'){
+          alert('Nouveau visiteur ! +1');
+          visitorValue = d.value;
+          showVisitorCountForAdmin();
+        }
+      }
+    });
+},10000);
 </script>
 </body>
 </html>
