@@ -3,191 +3,183 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Steal the Brainrot Fortnite</title>
+<title>Steal the Brainrot - Fortnite</title>
 <style>
 html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
+  margin:0; padding:0;
+  height:100%; width:100%;
   font-family: Arial, sans-serif;
   color: #fff;
-  overflow-x: hidden;
 }
 body {
-  background-image: url('TON_IMAGE_DE_FOND_URL_ICI'); /* Remplace par ton image */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-image: url('TON_IMAGE_DE_FOND_URL_ICI');
+  background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed;
 }
 .content {
   background-color: rgba(10,10,25,0.85);
-  width: 100%;
-  min-height: 100vh;
-  padding: 25px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
+  width: 100%; min-height: 100vh; padding: 25px;
 }
-@keyframes neonGlow {
-  0%,100% { text-shadow: 0 0 5px #00ffff,0 0 10px #ff00ff,0 0 20px #00ffff,0 0 30px #ff00ff; }
-  50% { text-shadow: 0 0 10px #00ffff,0 0 20px #ff00ff,0 0 30px #00ffff,0 0 40px #ff00ff; }
-}
-h1, h2 { color: #00ffff; animation: neonGlow 1.5s infinite alternate; margin-top: 0; }
-h1 { text-align: center; margin-bottom: 25px; }
-.code-container, .comment-section, .map-status {
+h1,h2 { color:#00ffff; margin-top:0; }
+.code-container, .comment-section, .map-status, #adminLogin {
   background-color: rgba(30,30,50,0.9);
-  border: 2px solid #00ffff;
-  border-radius: 12px;
-  padding: 20px;
-  margin: 20px 0;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease-out;
+  border:2px solid #00ffff; border-radius:12px; padding:20px; margin:20px 0;
 }
-.code-container.visible, .comment-section.visible, .map-status.visible {
-  opacity: 1;
-  transform: translateY(0);
-  box-shadow: 0 0 25px #00ffff, 0 0 40px #ff00ff;
-}
-.note { color: #ff5555; font-weight: bold; margin-top: 10px; }
-.comment-card {
-  background-color: rgba(0,255,255,0.1);
-  border: 2px solid #ff00ff;
-  border-radius: 10px;
-  padding: 12px;
-  margin: 10px 0;
-  box-shadow: 0 0 10px #00ffff,0 0 15px #ff00ff;
-}
-.comment-card strong { color: #ffcc00; }
-.comment-card em { color: #ff77ff; }
-.map-status ul { list-style: none; padding-left: 0; }
-.map-status li {
-  padding: 8px;
-  margin-bottom: 6px;
-  border-left: 4px solid #00ffff;
-  background: rgba(0,255,255,0.05);
-}
-#playerCount {
-  font-size: 1.3em;
-  font-weight: bold;
-  color: #00ff99;
-  text-shadow: 0 0 5px #00ffff,0 0 10px #ff00ff;
-  margin-bottom: 20px;
-}
-input, textarea, button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-}
-button {
-  background-color: #00ffff;
-  border: none;
-  color: #000;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 10px;
-  animation: neonGlow 1.5s infinite alternate;
-}
-button:hover { background-color: #ff00ff; color: #fff; }
-@media (max-width: 1024px) { body { background-attachment: scroll; } }
-@media (max-width: 480px){ h1{font-size:1.5em;} h2{font-size:1.1em;} button{padding:12px;} }
+#playerCount { font-weight:bold; color:#00ff99; margin-bottom:20px; }
+input, textarea, button { width:100%; padding:10px; margin-top:5px; border-radius:8px; }
+button { background-color:#00ffff; border:none; color:#000; cursor:pointer; margin-top:10px; }
+.delete-btn { background-color:#ff4444; color:#fff; border:none; padding:5px 10px; cursor:pointer; margin-top:10px; }
+#adminToggle { cursor:pointer; font-size:1.5em; text-align:center; margin-top:10px; }
+.comment-card { background-color: rgba(50,50,70,0.9); border-radius:8px; padding:10px; margin-top:10px; }
+@media(max-width:480px){ h1{font-size:1.5em;} h2{font-size:1.1em;} button{padding:12px;} }
 </style>
 </head>
 <body>
-
 <div class="content">
 <h1>Steal the Brainrot - Fortnite</h1>
-
-<p>Fortnite ne se limite plus à son Battle Royale classique. La carte <strong>Steal the Brainrot</strong> rencontre un immense succès. Inspirée des modes tycoon, elle repose sur une mécanique simple mais addictive : accumuler et protéger des Brainrots.</p>
+<p>Fortnite ne se limite plus à son Battle Royale classique. La carte <strong>Steal the Brainrot</strong> rencontre un immense succès.</p>
 
 <h2>👥 Joueurs en ligne</h2>
 <p id="playerCount">Chargement du nombre de joueurs...</p>
 
-<h2>💻 Comment utiliser les codes ?</h2>
-<p>Allez au terminal numérique ou à côté de la roue Galaxy Spin. Tapez le code et validez-le.</p>
-
 <h2>📜 Codes Utilisables</h2>
-<div class="code-container visible">
+<div class="code-container">
 <p>(NEW) 651312 → Fait apparaître un Ferinsini Luckini</p>
 <p>(NEW) 410592 → Brainrot Secret dans la machine d'amélioration</p>
-<p>(NEW) 3428 → Passe le temps de la machine d'amélioration</p>
-<p>536736 → Brainrot Secret dans la machine d'amélioration</p>
-<p>3851 → Passe le temps de la machine d'amélioration</p>
-<p>1003 → Passe le temps de la machine d'amélioration</p>
-<p>1706 → Débloque un Brainrot God Lucky Rot</p>
-<p>8257 → Lucky Rot Brainrot God</p>
-<p>5269 → Fait apparaître un Brainrot God</p>
+<p>... (autres codes)</p>
 </div>
 
 <h2>📜 Codes Expirés</h2>
-<div class="code-container visible">
-<p>526497, 9586, 2553, 7389, 9452, 1442, 9231, 6393, 3632, 3005, 9207676, 2388, 7346, 1825, 1912, 5289, 1507, 0108, 3000, 9547, 6759</p>
-<p class="note">Si un code ne fonctionne plus, c’est normal, il a été supprimé.</p>
+<div class="code-container">
+<p>526497, 9586, 2553, 7389, 9452, ...</p>
+<p>Si un code ne fonctionne plus, c’est normal, il a été supprimé.</p>
 </div>
 
-<h2>❓ FAQ</h2>
-<p><strong>Qu’est-ce que Steal the Brainrot ?</strong> Mode tycoon avec Brainrots et codes spéciaux.</p>
-
 <h2>🗺️ État de la map</h2>
-<div class="map-status visible">
+<div class="map-status">
 <ul>
 <li><strong>Zone centrale :</strong> Terminal numérique et roue Galaxy Spin</li>
-<li><strong>Zone Brainrot :</strong> Brainrots normaux apparaissent toutes les 5 minutes</li>
-<li><strong>Zone machine d’amélioration :</strong> Machine fonctionnelle, peut être accélérée avec les codes</li>
-<li><strong>Zone Ferinsini Luckini :</strong> Zone rare avec Brainrots spéciaux</li>
-<li><strong>Zone évènements :</strong> Codes désactivés temporairement pendant certains événements</li>
+<li><strong>Zone Brainrot :</strong> Brainrots apparaissent toutes les 5 min</li>
+<li><strong>Zone machine :</strong> Machine amélioration</li>
 </ul>
 </div>
 
-<div class="comment-section visible">
-<h2>💬 Vos retours sur les codes</h2>
+<p id="adminToggle">🔒 Accès Admin</p>
+
+<div id="adminLogin" style="display:none;">
+<h2>🔒 Code Admin</h2>
+<input type="password" id="adminCode" placeholder="Entrez le code admin">
+<button id="loginBtn">Valider</button>
+<p id="loginMessage" style="color:#ff5555;"></p>
+</div>
+
+<!-- Commentaires privés -->
+<div class="comment-section">
+<h2>💬 Journal privé admin</h2>
 <form id="commentForm">
-<label>Pseudo :</label><input type="text" id="pseudo" required>
-<label>Code testé :</label><input type="text" id="code" required>
-<label>Commentaire :</label><textarea id="message" rows="3" required></textarea>
-<button type="submit">Envoyer</button>
+<input type="text" id="pseudo" placeholder="Pseudo" required>
+<input type="text" id="code" placeholder="Code testé" required>
+<textarea id="message" placeholder="Commentaire" rows="3" required></textarea>
+<button type="submit">Ajouter commentaire</button>
 </form>
-<h3>Commentaires :</h3>
 <div id="commentsList"></div>
 </div>
+
+<!-- Commentaires publics -->
+<div class="comment-section">
+<h2>💬 Retours des joueurs</h2>
+<form id="publicForm">
+<input type="text" id="visitorName" placeholder="Pseudo" required>
+<textarea id="visitorMessage" placeholder="Votre commentaire" rows="2" required></textarea>
+<button type="submit">Publier</button>
+</form>
+<div id="publicComments"></div>
+</div>
+
 </div>
 
 <script>
-// Compteur joueurs réel
-async function updatePlayerCount() {
-  try {
-    const response = await fetch('https://fortniteapi.io/v1/island/STEAL_THE_BRAINROT/metrics', {
-      headers: { 'Authorization': 'Bearer VOTRE_CLE_API_ICI' }
-    });
-    const data = await response.json();
-    const playerCount = data?.data?.peak_ccu || 62818;
-    document.getElementById('playerCount').textContent = `Joueurs actuellement sur la map : ${playerCount}`;
-  } catch (error) {
-    document.getElementById('playerCount').textContent = 'Joueurs actuellement sur la map : 62818';
-  }
-}
-updatePlayerCount();
-setInterval(updatePlayerCount, 60000);
+// Compteur joueurs (placeholder)
+document.getElementById('playerCount').textContent = "Joueurs actuellement sur la map : 62818";
 
-// Formulaire commentaires
+// Toggle admin form
+const adminToggle = document.getElementById('adminToggle');
+const adminLoginDiv = document.getElementById('adminLogin');
+adminToggle.addEventListener('click', ()=>{ adminLoginDiv.style.display = adminLoginDiv.style.display === "none" ? "block" : "none"; });
+
+// Admin login
+let isAdmin=false;
+const loginBtn=document.getElementById('loginBtn');
+const loginMessage=document.getElementById('loginMessage');
+const adminCodeInput=document.getElementById('adminCode');
+
+loginBtn.addEventListener('click',()=>{
+  if(adminCodeInput.value==="2711"){
+    isAdmin=true;
+    loginMessage.textContent="Accès admin activé !";
+    loginMessage.style.color="#00ff99";
+    adminLoginDiv.style.display="none";
+    const comments=document.querySelectorAll('.comment-card');
+    comments.forEach(c=>{
+      if(!c.querySelector('.delete-btn')){
+        const delBtn=document.createElement('button');
+        delBtn.textContent="Supprimer"; delBtn.classList.add('delete-btn');
+        delBtn.addEventListener('click',()=>{ c.remove(); });
+        c.appendChild(delBtn);
+      }
+    });
+  } else { loginMessage.textContent="Code incorrect !"; }
+});
+
+// Journal privé admin (LocalStorage)
 const form=document.getElementById('commentForm');
 const commentsList=document.getElementById('commentsList');
-form.addEventListener('submit',function(e){
+let savedComments = JSON.parse(localStorage.getItem('comments')) || [];
+savedComments.forEach(c=>addCommentToPage(c));
+
+function addCommentToPage(c){
+  const card=document.createElement('div'); card.classList.add('comment-card');
+  card.innerHTML=`<strong>${c.pseudo}</strong> a testé le code <em>${c.code}</em> : ${c.message}`;
+  if(isAdmin){
+    const delBtn=document.createElement('button');
+    delBtn.textContent="Supprimer"; delBtn.classList.add('delete-btn');
+    delBtn.addEventListener('click',()=>{
+      card.remove();
+      const index=savedComments.findIndex(x=>x.pseudo===c.pseudo && x.code===c.code && x.message===c.message);
+      if(index>-1){ savedComments.splice(index,1); localStorage.setItem('comments',JSON.stringify(savedComments)); }
+    });
+    card.appendChild(delBtn);
+  }
+  commentsList.appendChild(card);
+}
+
+form.addEventListener('submit', function(e){
   e.preventDefault();
   const pseudo=document.getElementById('pseudo').value;
   const code=document.getElementById('code').value;
   const message=document.getElementById('message').value;
-  const card=document.createElement('div');
-  card.classList.add('comment-card');
-  card.innerHTML=`<strong>${pseudo}</strong> a testé le code <em>${code}</em> : ${message}`;
-  commentsList.appendChild(card);
+  const comment={pseudo,code,message};
+  addCommentToPage(comment);
+  savedComments.push(comment);
+  localStorage.setItem('comments',JSON.stringify(savedComments));
   form.reset();
 });
+
+// Commentaires publics simples
+const publicForm=document.getElementById('publicForm');
+const publicComments=document.getElementById('publicComments');
+let publicSaved=[];
+
+publicForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  const name=document.getElementById('visitorName').value;
+  const message=document.getElementById('visitorMessage').value;
+  const card=document.createElement('div'); card.classList.add('comment-card');
+  card.innerHTML=`<strong>${name}</strong> : ${message}`;
+  publicComments.appendChild(card);
+  publicSaved.push({name,message});
+  publicForm.reset();
+});
 </script>
+
 </body>
 </html>
