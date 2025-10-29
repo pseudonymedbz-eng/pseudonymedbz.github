@@ -5,99 +5,121 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Steal the Brainrot - Fortnite</title>
 <style>
-body{margin:0;padding:0;font-family:Arial,sans-serif;
-background-image:url('TON_IMAGE_DE_FOND_URL_ICI');background-size:cover;background-position:center;background-attachment:fixed;color:#fff;}
-.content{background-color:rgba(10,10,25,0.85);min-height:100vh;padding:25px;box-sizing:border-box;}
+body{
+  margin:0; padding:0; font-family:Arial,sans-serif;
+  background-image: url('TON_IMAGE_DE_FOND_URL_ICI');
+  background-size: cover; background-position:center; background-attachment:fixed;
+  color:#fff;
+}
+.content{
+  background-color: rgba(10,10,25,0.85);
+  min-height:100vh; padding:25px; box-sizing:border-box;
+}
 h1,h2{color:#00ffff;}
-.annonce-banner{display:none;background:red;color:#fff;font-size:1.4rem;padding:18px;border-radius:8px;margin-bottom:16px;text-align:center;}
-.annonce-banner h3{margin:0;font-size:1.6rem;}
-.annonce-banner p{margin:0;font-size:1.1rem;}
-.comment-section,.code-container,.map-status,#adminLogin{background: rgba(30,30,50,0.9); border:2px solid #00ffff; padding:20px; border-radius:12px; margin:20px 0;}
-input,textarea,button{width:100%;padding:10px;margin-top:5px;border-radius:8px;border:none;}
-button{background:#00ffff;color:#000;font-weight:bold;cursor:pointer;}
+.annonce-banner{
+  display:none; background:red; color:#fff; font-size:1.4rem;
+  padding:18px; border-radius:8px; margin-bottom:16px; text-align:center;
+}
+.annonce-banner h3{margin:0; font-size:1.6rem;}
+.annonce-banner p{margin:0; font-size:1.1rem;}
+.comment-section, .code-container, .map-status, #adminLogin{
+  background: rgba(30,30,50,0.9); border:2px solid #00ffff; padding:20px; border-radius:12px; margin:20px 0;
+}
+input, textarea, button{width:100%; padding:10px; margin-top:5px; border-radius:8px; border:none;}
+button{background:#00ffff; color:#000; font-weight:bold; cursor:pointer;}
 .delete-btn{background:#ff4444;color:#fff;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;margin-top:5px;}
 .comment{background: rgba(255,255,255,0.1); padding:10px; border-radius:8px; margin-bottom:10px;}
-#brainrot-emoji{position: fixed; bottom: 20px; right: 20px; font-size:36px; cursor:pointer; padding:10px; background: rgba(0,0,0,0.3); border-radius:50%; z-index:9999;}
+#brainrot-emoji{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 36px;
+  cursor: pointer;
+  padding: 10px;
+  background: rgba(0,0,0,0.3);
+  border-radius: 50%;
+  z-index: 9999;
+}
 #brainrot-emoji:hover{transform:scale(1.2);}
 .annonce {background-color: rgba(255,0,0,0.1); padding:10px; margin-bottom:10px; border-left:4px solid red;}
 </style>
 </head>
 <body>
 <div class="content">
-<h1>Steal the Brainrot - Fortnite</h1>
+  <h1>Steal the Brainrot - Fortnite</h1>
 
-<!-- BANNIERE D'ANNONCE -->
-<div id="annonceBanner" class="annonce-banner">
-  <h3 id="annonceBannerTitle"></h3>
-  <p id="annonceBannerMsg"></p>
+  <!-- BANNIERE D'ANNONCE -->
+  <div id="annonceBanner" class="annonce-banner">
+    <h3 id="annonceBannerTitle"></h3>
+    <p id="annonceBannerMsg"></p>
+  </div>
+
+  <!-- HISTORIQUE ANNONCES -->
+  <div id="annoncesDiv"></div>
+
+  <p>Fortnite ne se limite plus à son Battle Royale classique. La carte <strong>Steal the Brainrot</strong> rencontre un immense succès.</p>
+
+  <h2>👥 Joueurs en ligne</h2>
+  <p id="visitorCount" style="display:none;">Chargement...</p>
+
+  <h2>💻 Comment utiliser les codes ?</h2>
+  <p>Allez au terminal numérique ou à côté de la roue Galaxy Spin. Tapez le code et validez-le.</p>
+
+  <h2>📜 Codes Utilisables</h2>
+  <div class="code-container">
+    <p>(NEW) 651312 → Fait apparaître un Ferinsini Luckini</p>
+    <p>(NEW) 410592 → Brainrot Secret dans la machine d'amélioration</p>
+    <p>(NEW) 3428 → Passe le temps de la machine d'amélioration</p>
+    <p>536736 → Brainrot Secret dans la machine d'amélioration</p>
+    <p>3851 → Passe le temps de la machine d'amélioration</p>
+    <p>1003 → Passe le temps de la machine d'amélioration</p>
+    <p>1706 → Débloque un Brainrot God Lucky Rot</p>
+    <p>8257 → Lucky Rot Brainrot God</p>
+    <p>5269 → Fait apparaître un Brainrot God</p>
+  </div>
+
+  <h2>📜 Codes Expirés</h2>
+  <div class="code-container">
+    <p>526497, 9586, 2553, 7389, 9452, 1442, 9231, 6393, 3632, 3005, 9207676, 2388, 7346, 1825, 1912, 5289, 1507, 0108, 3000, 9547, 6759</p>
+    <p>Si un code ne fonctionne plus, c’est normal, il a été supprimé.</p>
+  </div>
+
+  <h2>🗺️ État de la map</h2>
+  <div class="map-status">
+    <p>Zone centrale : Terminal numérique et roue Galaxy Spin</p>
+    <p>Zone Brainrot : Brainrots normaux apparaissent toutes les 5 minutes</p>
+    <p>Zone machine d’amélioration : Machine fonctionnelle, peut être accélérée avec les codes</p>
+    <p>Zone Ferinsini Luckini : Zone rare avec Brainrots spéciaux</p>
+  </div>
+
+  <h2>💬 Commentaires des joueurs</h2>
+  <div class="comment-section">
+    <div id="comments"></div>
+    <input id="username" placeholder="Ton pseudo">
+    <textarea id="message" placeholder="Ton message..."></textarea>
+    <button id="sendComment">Envoyer</button>
+  </div>
+
+  <!-- ADMIN -->
+  <div id="adminLogin" style="display:none;" class="comment-section">
+    <h3>🔐 Espace Admin</h3>
+    <div id="adminNotes"></div>
+
+    <h3>📢 Créer une annonce</h3>
+    <input id="annTitle" placeholder="Titre de l'annonce">
+    <textarea id="annMsg" placeholder="Message de l'annonce"></textarea>
+    <input id="annCountdown" type="number" placeholder="Durée en secondes">
+    <button id="publishAnnonce">Publier annonce</button>
+  </div>
 </div>
-<div id="annoncesDiv"></div>
 
-<h2>👥 Joueurs en ligne</h2>
-<p id="visitorCount">Chargement...</p>
-
-<h2>💻 Comment utiliser les codes ?</h2>
-<p>Allez au terminal numérique ou à côté de la roue Galaxy Spin. Tapez le code et validez-le.</p>
-
-<h2>📜 Codes Utilisables</h2>
-<div class="code-container">
-<p>(NEW) 651312 → Fait apparaître un Ferinsini Luckini</p>
-<p>(NEW) 410592 → Brainrot Secret dans la machine d'amélioration</p>
-<p>(NEW) 3428 → Passe le temps de la machine d'amélioration</p>
-<p>536736 → Brainrot Secret dans la machine d'amélioration</p>
-<p>3851 → Passe le temps de la machine d'amélioration</p>
-<p>1003 → Passe le temps de la machine d'amélioration</p>
-<p>1706 → Débloque un Brainrot God Lucky Rot</p>
-<p>8257 → Lucky Rot Brainrot God</p>
-<p>5269 → Fait apparaître un Brainrot God</p>
-</div>
-
-<h2>📜 Codes Expirés</h2>
-<div class="code-container">
-<p>526497, 9586, 2553, 7389, 9452, 1442, 9231, 6393, 3632, 3005, 9207676, 2388, 7346, 1825, 1912, 5289, 1507, 0108, 3000, 9547, 6759</p>
-<p>Si un code ne fonctionne plus, c’est normal, il a été supprimé.</p>
-</div>
-
-<h2>🗺️ État de la map</h2>
-<div class="map-status">
-<p>Zone centrale : Terminal numérique et roue Galaxy Spin</p>
-<p>Zone Brainrot : Brainrots normaux apparaissent toutes les 5 minutes</p>
-<p>Zone machine d’amélioration : Machine fonctionnelle, peut être accélérée avec les codes</p>
-<p>Zone Ferinsini Luckini : Zone rare avec Brainrots spéciaux</p>
-</div>
-
-<h2>💬 Commentaires des joueurs</h2>
-<div class="comment-section">
-<div id="comments"></div>
-<input id="username" placeholder="Ton pseudo">
-<textarea id="message" placeholder="Ton message..."></textarea>
-<button id="sendComment">Envoyer</button>
-</div>
-
-<!-- ADMIN -->
-<div id="adminLogin" style="display:none;" class="comment-section">
-<h3>🔐 Espace Admin</h3>
-<div id="adminComments"></div>
-
-<h3>📢 Créer une annonce</h3>
-<input id="annTitle" placeholder="Titre de l'annonce">
-<textarea id="annMsg" placeholder="Message de l'annonce"></textarea>
-<input id="annCountdown" type="number" placeholder="Durée en secondes">
-<button id="publishAnnonce">Publier annonce</button>
-
-<h3>📝 Notes Admin</h3>
-<textarea id="adminNote" placeholder="Écris une note"></textarea>
-<button id="addAdminNote">Ajouter note</button>
-<div id="adminNotesList"></div>
-</div>
-
-</div>
 <div id="brainrot-emoji" title="Menu admin secret">🧠</div>
 
-<!-- FIREBASE SDK -->
+<!-- Firebase -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, onSnapshot, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-analytics.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAAc2r6FQw66MrkUNmfEhw_RQq2gqJmb_o",
@@ -110,19 +132,23 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 const db = getFirestore(app);
 
 // ---------------- COMMENTAIRES PUBLICS ----------------
 const commentsDiv = document.getElementById('comments');
+let isAdmin = false;
+
 document.getElementById('sendComment').addEventListener('click', async ()=>{
   const user = document.getElementById('username').value.trim();
   const msg = document.getElementById('message').value.trim();
   if(!user||!msg){alert('Remplis pseudo et message !'); return;}
   await addDoc(collection(db,'public_comments'),{user,msg,timestamp:Date.now()});
-  document.getElementById('username').value=''; document.getElementById('message').value='';
+  document.getElementById('username').value=''; 
+  document.getElementById('message').value='';
 });
 
-// Affichage en temps réel
+// Affichage en temps réel avec suppression pour admin
 const publicCol = collection(db,'public_comments');
 onSnapshot(publicCol,(snap)=>{
   commentsDiv.innerHTML='';
@@ -131,46 +157,92 @@ onSnapshot(publicCol,(snap)=>{
     const div=document.createElement('div');
     div.className='comment';
     div.innerHTML=`<strong>${c.user}</strong> : ${c.msg}`;
+    
+    // Si admin, ajouter bouton supprimer
+    if(isAdmin){
+      const delBtn = document.createElement('button');
+      delBtn.className='delete-btn';
+      delBtn.textContent='Supprimer';
+      delBtn.onclick = async ()=>{
+        await deleteDoc(doc(db,'public_comments',d.id));
+      };
+      div.appendChild(delBtn);
+    }
+    
     commentsDiv.appendChild(div);
   });
 });
 
 // ---------------- ADMIN ----------------
-const brainrot = document.getElementById('brainrot-emoji');
 const adminDiv = document.getElementById('adminLogin');
-
-brainrot.addEventListener('click', ()=>{openAdmin();});
-document.addEventListener('keydown',(e)=>{if(e.key==='a' && e.ctrlKey) openAdmin();});
+const brainrot = document.getElementById('brainrot-emoji');
 
 function openAdmin(){
   const code=prompt("Code admin :");
   if(code==='2711'){
     adminDiv.style.display='block';
-    loadAdminNotes();
+    isAdmin = true; 
   } else alert('Code incorrect !');
 }
 
-// NOTES ADMIN
-const notesList = document.getElementById('adminNotesList');
-document.getElementById('addAdminNote').addEventListener('click',async()=>{
-  const note=document.getElementById('adminNote').value.trim();
-  if(!note){alert('Écris une note'); return;}
-  await addDoc(collection(db,'admin_notes'),{note,timestamp:Date.now()});
-  document.getElementById('adminNote').value='';
+brainrot.addEventListener('click', openAdmin);
+document.addEventListener('keydown', (e)=>{
+  if(e.key==='a' && e.ctrlKey){ openAdmin(); }
 });
 
-function loadAdminNotes(){
-  const notesCol = collection(db,'admin_notes');
-  onSnapshot(notesCol,(snap)=>{
-    notesList.innerHTML='';
-    snap.docs.forEach(d=>{
-      const n=d.data();
-      const div=document.createElement('div');
-      div.className='comment';
-      div.textContent=n.note;
-      notesList.appendChild(div);
-    });
+// ---------------- ANNONCES ----------------
+const banner=document.getElementById('annonceBanner');
+const titleEl=document.getElementById('annonceBannerTitle');
+const msgEl=document.getElementById('annonceBannerMsg');
+const annDiv=document.getElementById('annoncesDiv');
+let annonces = [];
+let annTimer;
+
+function renderAnnonces(){
+  if(annonces.length===0){banner.style.display='none'; annDiv.innerHTML=''; return;}
+  const last=annonces[annonces.length-1];
+  banner.style.display='block';
+  titleEl.textContent=last.titre;
+  let remaining=last.countdown||0;
+  clearInterval(annTimer);
+  function updateBanner(){
+    if(remaining>0){
+      msgEl.textContent=`${last.msg} | Temps restant : ${formatTime(remaining)}`;
+      remaining--; 
+    } else { msgEl.textContent=last.msg; clearInterval(annTimer); banner.style.display='none'; }
+  }
+  updateBanner();
+  if(remaining>0){ annTimer=setInterval(updateBanner,1000); }
+
+  annDiv.innerHTML='<h3>Historique des annonces</h3>';
+  annonces.slice().reverse().forEach((a,idx)=>{
+    const box=document.createElement('div'); box.className='annonce';
+    box.innerHTML=`<strong>Admin — ${a.titre}</strong><br>${a.msg}`;
+    if(adminDiv.style.display==='block'){
+      const del=document.createElement('button'); del.className='delete-btn'; del.textContent='Supprimer';
+      del.onclick=()=>{annonces.splice(annonces.length-1-idx,1); renderAnnonces();}
+      box.appendChild(del);
+    }
+    annDiv.appendChild(box);
   });
+}
+
+document.getElementById('publishAnnonce').addEventListener('click',()=>{
+  const t=document.getElementById('annTitle').value.trim();
+  const m=document.getElementById('annMsg').value.trim();
+  let c=parseInt(document.getElementById('annCountdown').value);
+  if(!t||!m){alert('Titre et message obligatoires'); return;}
+  if(isNaN(c)||c<0) c=0;
+  annonces.push({titre:t,msg:m,countdown:c});
+  document.getElementById('annTitle').value='';
+  document.getElementById('annMsg').value='';
+  document.getElementById('annCountdown').value='';
+  renderAnnonces();
+});
+
+function formatTime(s){
+  const h=Math.floor(s/3600); const m=Math.floor((s%3600)/60); const sec=s%60;
+  return `${h>0?h+'h ':''}${m>0?m+'m ':''}${sec}s`;
 }
 </script>
 </body>
