@@ -1,167 +1,311 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Steal the Brainrot - Fortnite</title>
 <style>
+:root{--accent:#00ffff;}
 body{
-  margin:0; padding:0; font-family:Arial,sans-serif;
-  background-image: url('TON_IMAGE_DE_FOND_URL_ICI');
-  background-size: cover; background-position:center; background-attachment:fixed;
+  margin:0;font-family:Arial,Helvetica,sans-serif;
+  background-image:url('TON_IMAGE_DE_FOND_URL_ICI');
+  background-size:cover;background-position:center;
   color:#fff;
 }
-.content{
-  background-color: rgba(10,10,25,0.85);
-  min-height:100vh; padding:25px; box-sizing:border-box;
-}
-h1,h2{color:#00ffff;}
-.comment-section, .code-container, .map-status, #adminLogin{
-  background: rgba(30,30,50,0.9); border:2px solid #00ffff; padding:20px; border-radius:12px; margin:20px 0;
-}
-input, textarea, button{width:100%; padding:10px; margin-top:5px; border-radius:8px; border:none;}
-button{background:#00ffff; color:#000; font-weight:bold; cursor:pointer;}
-.delete-btn{background:#ff4444;color:#fff;border:none;padding:5px 10px;border-radius:5px;cursor:pointer;margin-top:5px;}
-.comment{background: rgba(255,255,255,0.1); padding:10px; border-radius:8px; margin-bottom:10px;}
-#brainrot-emoji{
-  position: fixed; bottom: 20px; right: 20px; font-size: 36px;
-  cursor: pointer; padding: 10px; background: rgba(0,0,0,0.3); border-radius: 50%; z-index: 9999;
-}
-#brainrot-emoji:hover{transform:scale(1.2);}
-.annonce {background-color: rgba(255,0,0,0.1); padding:10px; margin-bottom:10px; border-left:4px solid red;}
+.container{background:rgba(6,6,20,0.88);min-height:100vh;padding:24px;box-sizing:border-box;}
+h1,h2{color:var(--accent);margin:6px 0;}
+.box{background:rgba(20,20,40,0.95);border:2px solid var(--accent);padding:14px;border-radius:10px;margin:12px 0;}
+.codes p{margin:6px 0;}
+.annonce-banner{display:none;background:#c62828;color:#fff;padding:14px;border-radius:8px;margin-bottom:12px;text-align:center;}
+.annonce{background:rgba(255,0,0,0.06);padding:10px;border-left:4px solid red;margin-bottom:10px;border-radius:6px;}
+.comment{background:rgba(255,255,255,0.04);padding:10px;border-radius:8px;margin-bottom:8px;}
+input,textarea,button{width:100%;padding:10px;margin-top:8px;border-radius:8px;border:0;box-sizing:border-box;}
+button{background:var(--accent);color:#000;font-weight:700;cursor:pointer;}
+.delete-btn{background:#ff4444;color:#fff;border:0;padding:6px 10px;border-radius:6px;cursor:pointer;margin-left:8px;}
+#brainrot-emoji{position:fixed;right:18px;bottom:18px;font-size:34px;padding:8px;border-radius:50%;background:rgba(0,0,0,0.35);cursor:pointer;z-index:9999;}
+@media(max-width:600px){.container{padding:12px} h1{font-size:20px}}
 </style>
 </head>
 <body>
-<div class="content">
+<div class="container">
   <h1>Steal the Brainrot - Fortnite</h1>
 
-  <!-- HISTORIQUE ANNONCES -->
-  <div id="annoncesDiv"></div>
-
-  <h2>💬 Commentaires des joueurs</h2>
-  <div class="comment-section">
-    <div id="comments"></div>
-    <input id="username" placeholder="Ton pseudo">
-    <textarea id="message" placeholder="Ton message..."></textarea>
-    <button onclick="addComment()">Envoyer</button>
+  <!-- Bannière annonce -->
+  <div id="annonceBanner" class="annonce-banner">
+    <strong id="annTitleBanner"></strong>
+    <div id="annMsgBanner"></div>
   </div>
 
-  <!-- ADMIN -->
-  <div id="adminLogin" style="display:none;" class="comment-section">
-    <h3>🔐 Espace Admin</h3>
-    <div id="adminComments"></div>
-    <h3>📢 Créer une annonce</h3>
-    <input id="annTitle" placeholder="Titre de l'annonce">
-    <textarea id="annMsg" placeholder="Message de l'annonce"></textarea>
-    <input id="annCountdown" type="number" placeholder="Durée en secondes">
-    <button id="publishAnnonce">Publier annonce</button>
+  <!-- Historique annonces -->
+  <div id="annoncesHistory" class="box"></div>
+
+  <p>Fortnite ne se limite plus à son Battle Royale classique. La carte <strong>Steal the Brainrot</strong> rencontre un immense succès. Inspirée des modes tycoon, elle repose sur la mécanique d'accumulation de Brainrots.</p>
+
+  <div class="box">
+    <h2>👥 Joueurs en ligne</h2>
+    <div id="visitorCount">Chargement...</div>
   </div>
+
+  <div class="box">
+    <h2>💻 Comment utiliser les codes ?</h2>
+    <p>Allez au terminal numérique ou à côté de la roue Galaxy Spin. Tapez le code puis validez.</p>
+  </div>
+
+  <div class="box codes">
+    <h2>📜 Codes Utilisables</h2>
+    <p>(NEW) 651312 → Fait apparaître un Ferinsini Luckini</p>
+    <p>(NEW) 410592 → Brainrot Secret dans la machine d'amélioration</p>
+    <p>(NEW) 3428 → Passe le temps de la machine d'amélioration</p>
+    <p>536736 → Brainrot Secret dans la machine d'amélioration</p>
+    <p>3851 → Passe le temps de la machine d'amélioration</p>
+    <p>1003 → Passe le temps de la machine d'amélioration</p>
+    <p>1706 → Débloque un Brainrot God Lucky Rot</p>
+    <p>8257 → Lucky Rot Brainrot God</p>
+    <p>5269 → Fait apparaître un Brainrot God</p>
+  </div>
+
+  <div class="box codes">
+    <h2>📜 Codes Expirés</h2>
+    <p>526497, 9586, 2553, 7389, 9452, 1442, 9231, 6393, 3632, 3005, 9207676, 2388, 7346, 1825, 1912, 5289, 1507, 0108, 3000, 9547, 6759</p>
+    <p>Si un code ne fonctionne plus, c’est normal — il a été supprimé.</p>
+  </div>
+
+  <div class="box">
+    <h2>🗺️ État de la map</h2>
+    <p>Zone centrale : Terminal numérique et roue Galaxy Spin</p>
+    <p>Zone Brainrot : Brainrots normaux apparaissent toutes les 5 minutes</p>
+    <p>Zone machine d’amélioration : Machine fonctionnelle, peut être accélérée avec les codes</p>
+    <p>Zone Ferinsini Luckini : Zone rare avec Brainrots spéciaux</p>
+  </div>
+
+  <div class="box">
+    <h2>💬 Commentaires des joueurs</h2>
+    <div id="commentsList"></div>
+
+    <input id="inputUser" placeholder="Ton pseudo">
+    <textarea id="inputMsg" rows="3" placeholder="Écris si le code X marche (✅) ou pas (❌)"></textarea>
+    <button id="btnSend">Envoyer</button>
+  </div>
+
+  <!-- Admin panel -->
+  <div id="adminPanel" class="box" style="display:none;">
+    <h2>🔐 Panneau Admin</h2>
+    <div><strong>Commentaires (modération)</strong></div>
+    <div id="adminComments" style="margin-top:10px;"></div>
+
+    <hr style="margin:12px 0;border-color:rgba(255,255,255,0.06)">
+
+    <h3>📢 Publier une annonce</h3>
+    <input id="annTitre" placeholder="Titre de l'annonce">
+    <textarea id="annTexte" rows="3" placeholder="Message public..."></textarea>
+    <input id="annDur" type="number" placeholder="Durée en secondes (ex: 60)">
+    <button id="btnPublishAnn">Publier l'annonce</button>
+
+    <hr style="margin:12px 0;border-color:rgba(255,255,255,0.06)">
+    <div id="adminVisitor">Joueurs en ligne : ...</div>
+  </div>
+
 </div>
 
 <div id="brainrot-emoji" title="Menu admin secret">🧠</div>
 
+<!-- FIREBASE + SCRIPT -->
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
+/* ---------------- IMPORTS FIREBASE ---------------- */
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyAAc2r6FQw66MrkUNmfEhw_RQq2gqJmb_o",
-    authDomain: "stealthebrainrot-fortnite.firebaseapp.com",
-    projectId: "stealthebrainrot-fortnite",
-    storageBucket: "stealthebrainrot-fortnite.firebasestorage.app",
-    messagingSenderId: "1027380486749",
-    appId: "1:1027380486749:web:da177abdbbd569947fa3b4",
-    measurementId: "G-6L2XGK4282"
-  };
+/* ---------------- FIREBASE CONFIG - remplace si besoin ---------------- */
+const firebaseConfig = {
+  apiKey: "AIzaSyAAc2r6FQw66MrkUNmfEhw_RQq2gqJmb_o",
+  authDomain: "stealthebrainrot-fortnite.firebaseapp.com",
+  projectId: "stealthebrainrot-fortnite",
+  storageBucket: "stealthebrainrot-fortnite.firebasestorage.app",
+  messagingSenderId: "1027380486749",
+  appId: "1:1027380486749:web:da177abdbbd569947fa3b4",
+  measurementId: "G-6L2XGK4282"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
+/* ---------------- UTIL ---------------- */
+const escapeHtml = str => {
+  if(!str) return '';
+  return String(str).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#39;');
+};
 
-  // ---------------- COMMENTAIRES ----------------
-  const commentsDiv = document.getElementById('comments');
+/* ---------------- SELECTEURS ---------------- */
+const commentsList = document.getElementById('commentsList');
+const adminComments = document.getElementById('adminComments');
+const btnSend = document.getElementById('btnSend');
+const inputUser = document.getElementById('inputUser');
+const inputMsg = document.getElementById('inputMsg');
+const adminPanel = document.getElementById('adminPanel');
+const annonceBanner = document.getElementById('annonceBanner');
+const annTitleBanner = document.getElementById('annTitleBanner');
+const annMsgBanner = document.getElementById('annMsgBanner');
+const annoncesHistory = document.getElementById('annoncesHistory');
+const btnPublishAnn = document.getElementById('btnPublishAnn');
+const annTitre = document.getElementById('annTitre');
+const annTexte = document.getElementById('annTexte');
+const annDur = document.getElementById('annDur');
+const adminVisitor = document.getElementById('adminVisitor');
+const visitorCountEl = document.getElementById('visitorCount');
 
-  async function loadComments(){
-    commentsDiv.innerHTML = '';
-    const snapshot = await getDocs(collection(db,'comments'));
-    snapshot.forEach(docu=>{
-      const data = docu.data();
-      const div = document.createElement('div'); div.className='comment';
-      div.innerHTML = `<strong>${data.user}</strong> : ${data.msg}`;
-      commentsDiv.appendChild(div);
-    });
-  }
+let isAdmin = false;
+let currentAnnTimer = null;
 
-  async function addComment(){
-    const user=document.getElementById('username').value.trim();
-    const msg=document.getElementById('message').value.trim();
-    if(!user||!msg){alert('Remplis pseudo et message !'); return;}
-    await addDoc(collection(db,'comments'),{user,msg});
-    document.getElementById('username').value='';
-    document.getElementById('message').value='';
-    loadComments();
-  }
+/* ---------------- COLLECTIONS & REAL-TIME ---------------- */
+const commentsCol = collection(db, 'commentaires'); // collection "commentaires"
+const annoncesCol = collection(db, 'annonces');     // collection "annonces"
 
-  loadComments();
+/* Real-time comments : affichage public + admin (onSnapshot) */
+const qComments = query(commentsCol, orderBy('ts', 'asc'));
+onSnapshot(qComments, snapshot => {
+  commentsList.innerHTML = '';
+  adminComments.innerHTML = '';
+  snapshot.forEach(docSnap => {
+    const data = docSnap.data();
+    const id = docSnap.id;
+    // public view
+    const div = document.createElement('div');
+    div.className = 'comment';
+    div.innerHTML = `<strong>${escapeHtml(data.user)}</strong> : ${escapeHtml(data.msg)}`;
+    commentsList.appendChild(div);
 
-  // ---------------- ADMIN ----------------
-  const brainrot = document.getElementById('brainrot-emoji');
-  const adminDiv = document.getElementById('adminLogin');
+    // admin view (with delete)
+    const aDiv = document.createElement('div');
+    aDiv.className = 'comment';
+    aDiv.innerHTML = `<strong>${escapeHtml(data.user)}</strong> : ${escapeHtml(data.msg)}`;
+    if(isAdmin){
+      const del = document.createElement('button');
+      del.className = 'delete-btn';
+      del.textContent = 'Supprimer';
+      del.onclick = async () => {
+        if(confirm('Supprimer ce commentaire ?')) {
+          await deleteDoc(doc(db, 'commentaires', id));
+        }
+      };
+      aDiv.appendChild(del);
+    }
+    adminComments.appendChild(aDiv);
+  });
+});
 
-  function openAdmin(){
-    const code=prompt("Code admin :");
-    if(code==='2711'){
-      adminDiv.style.display='block';
-      loadAdminComments();
-      renderAnnonces();
-    } else alert('Code incorrect !');
-  }
-
-  brainrot.addEventListener('click', openAdmin);
-  document.addEventListener('keydown', (e)=>{
-    if(e.key==='a' && e.ctrlKey){ openAdmin(); }
+/* Real-time annonces */
+const qAnns = query(annoncesCol, orderBy('ts','asc'));
+onSnapshot(qAnns, snapshot => {
+  const anns = [];
+  snapshot.forEach(snap => anns.push({ id: snap.id, ...snap.data() }));
+  // history
+  annoncesHistory.innerHTML = '<h3>Historique des annonces</h3>';
+  anns.slice().reverse().forEach(a => {
+    const box = document.createElement('div');
+    box.className = 'annonce';
+    box.innerHTML = `<strong>Admin — ${escapeHtml(a.titre)}</strong><br>${escapeHtml(a.msg)}`;
+    if(isAdmin){
+      const del = document.createElement('button');
+      del.className = 'delete-btn';
+      del.textContent = 'Supprimer';
+      del.onclick = async ()=> {
+        if(confirm('Supprimer l\'annonce ?')) await deleteDoc(doc(db,'annonces',a.id));
+      };
+      box.appendChild(del);
+    }
+    annoncesHistory.appendChild(box);
   });
 
-  async function loadAdminComments(){
-    const div=document.getElementById('adminComments'); div.innerHTML='';
-    const snapshot = await getDocs(collection(db,'adminNotes'));
-    snapshot.forEach((docu)=>{
-      const d = document.createElement('div'); d.className='comment';
-      d.innerHTML = docu.data().msg;
-      const del=document.createElement('button'); del.className='delete-btn'; del.textContent='Supprimer';
-      del.onclick = async ()=>{
-        await deleteDoc(doc(db,'adminNotes',docu.id));
-        loadAdminComments();
+  // last announcement banner with countdown
+  if(anns.length>0){
+    const last = anns[anns.length-1];
+    annTitleBanner.textContent = last.titre;
+    let remaining = (last.duration && Number(last.duration)) || 0;
+    clearInterval(currentAnnTimer);
+    annonceBanner.style.display = 'block';
+    function tick(){
+      if(remaining>0){
+        annMsgBanner.textContent = `${last.msg} — Temps restant : ${formatTime(remaining)}`;
+        remaining--;
+      } else {
+        annMsgBanner.textContent = last.msg;
+        clearInterval(currentAnnTimer);
+        if(last.duration && Number(last.duration)>0) annonceBanner.style.display = 'none';
       }
-      d.appendChild(del);
-      div.appendChild(d);
-    });
+    }
+    tick();
+    if(remaining>0) currentAnnTimer = setInterval(tick,1000);
+  } else {
+    annonceBanner.style.display = 'none';
+    annTitleBanner.textContent = '';
+    annMsgBanner.textContent = '';
   }
+});
 
-  // ---------------- ANNONCES ----------------
-  async function renderAnnonces(){
-    const annDiv=document.getElementById('annoncesDiv');
-    annDiv.innerHTML='<h3>Historique des annonces</h3>';
-    const snapshot = await getDocs(collection(db,'annonces'));
-    snapshot.forEach(docu=>{
-      const data = docu.data();
-      const box=document.createElement('div'); box.className='annonce';
-      box.innerHTML=`<strong>Admin — ${data.titre}</strong><br>${data.msg}`;
-      annDiv.appendChild(box);
-    });
+/* ---------------- ENVOI COMMENTAIRE ---------------- */
+btnSend.addEventListener('click', async ()=>{
+  const user = inputUser.value.trim();
+  const msg = inputMsg.value.trim();
+  if(!user || !msg){ alert('Remplis pseudo et message !'); return; }
+  btnSend.disabled = true;
+  try{
+    await addDoc(commentsCol, { user, msg, ts: Date.now() });
+    inputUser.value=''; inputMsg.value='';
+  }catch(e){
+    console.error(e); alert('Erreur lors de l\'envoi.');
   }
+  btnSend.disabled = false;
+});
 
-  document.getElementById('publishAnnonce').addEventListener('click', async ()=>{
-    const t=document.getElementById('annTitle').value.trim();
-    const m=document.getElementById('annMsg').value.trim();
-    let c=parseInt(document.getElementById('annCountdown').value);
-    if(!t||!m){alert('Titre et message obligatoires'); return;}
-    if(isNaN(c)||c<0) c=0;
-    await addDoc(collection(db,'annonces'),{titre:t,msg:m,countdown:c});
-    document.getElementById('annTitle').value='';
-    document.getElementById('annMsg').value='';
-    document.getElementById('annCountdown').value='';
-    renderAnnonces();
-  });
+/* ---------------- PUBLIER ANNONCE (admin) ---------------- */
+btnPublishAnn.addEventListener('click', async ()=>{
+  if(!isAdmin){ alert('Accès admin requis'); return; }
+  const titre = annTitre.value.trim(); const msg = annTexte.value.trim();
+  const duration = parseInt(annDur.value) || 0;
+  if(!titre || !msg){ alert('Titre et message obligatoires'); return; }
+  try{
+    await addDoc(annoncesCol, { titre, msg, duration, ts: Date.now() });
+    annTitre.value=''; annTexte.value=''; annDur.value='';
+  }catch(e){ console.error(e); alert('Erreur publication'); }
+});
+
+/* ---------------- ADMIN + VISITEURS ---------------- */
+const brain = document.getElementById('brainrot-emoji');
+brain.addEventListener('click', async ()=>{
+  const code = prompt('Code admin :');
+  if(code === '2711'){
+    isAdmin = true;
+    adminPanel.style.display = 'block';
+    // update admin visitor text
+    adminVisitor.innerText = visitorCountEl.innerText;
+  } else alert('Code incorrect !');
+});
+// Ctrl + A ouvre aussi admin
+document.addEventListener('keydown', (e)=>{ if(e.ctrlKey && e.key.toLowerCase()==='a'){ brain.click(); } });
+
+/* ---------------- VISITEUR +1 (CountAPI) - visible admin ---------------- */
+let lastCount = 0;
+function formatTime(s){ const h=Math.floor(s/3600), m=Math.floor((s%3600)/60), sec=s%60; return `${h>0?h+'h ':''}${m>0?m+'m ':''}${sec}s`; }
+
+async function fetchVisitor(){
+  try{
+    const res = await fetch('https://api.countapi.xyz/hit/stealthebrainrot/visits');
+    const j = await res.json();
+    const v = j.value || 0;
+    if(v > lastCount && isAdmin){
+      alert('+1 visiteur !');
+    }
+    lastCount = v;
+    visitorCountEl.innerText = `Joueurs actuellement sur la map : ${v}`;
+    if(isAdmin) adminVisitor.innerText = `Joueurs en ligne : ${v}`;
+  }catch(e){
+    visitorCountEl.innerText = 'Erreur compteur';
+  }
+}
+// initial and poll
+fetchVisitor();
+setInterval(fetchVisitor,10000);
+
+/* ---------------- FIN ---------------- */
 </script>
 </body>
 </html>
